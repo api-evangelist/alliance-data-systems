@@ -1,7 +1,11 @@
 aid: alliance-data-systems
-url: https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.alliance-data-systems.com
+description: >-
+  Alliance Data Systems is a provider of data-driven marketing, loyalty, and private-label
+  credit card services to large consumer-based businesses across multiple industries.
