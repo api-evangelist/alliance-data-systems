@@ -1,0 +1,23 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.breadpayments.com/transactions/txn_AbCdEf/shipping",
+    "headers": {
+      "Authorization": "Bearer YOUR_LEGACY_TOKEN",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "carrier": "UPS",
+      "trackingNumber": "1Z999AA10123456784",
+      "shippedAt": "2026-05-24T09:00:00Z"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "carrier": "UPS",
+      "trackingNumber": "1Z999AA10123456784",
+      "shippedAt": "2026-05-24T09:00:00Z"
+    }
+  }
+}

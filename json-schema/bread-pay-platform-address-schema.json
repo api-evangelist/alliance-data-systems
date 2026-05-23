@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-schema/bread-pay-platform-address-schema.json",
+  "title": "BreadPayPlatformAddress",
+  "description": "Postal address used for billing or shipping on a Bread Pay buyer or transaction.",
+  "type": "object",
+  "properties": {
+    "address1": { "type": "string" },
+    "address2": { "type": "string" },
+    "locality": { "type": "string" },
+    "region": { "type": "string" },
+    "postalCode": { "type": "string" },
+    "country": { "type": "string", "minLength": 2, "maxLength": 2 }
+  }
+}

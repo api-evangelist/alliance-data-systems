@@ -1,33 +1,263 @@
 aid: alliance-data-systems
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/refs/heads/main/apis.yml
-modified: '2026-04-19'
+name: Alliance Data Systems (Bread Financial Holdings)
+url: https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/refs/heads/main/apis.yml
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+created: '2026-04-19'
+modified: '2026-05-23'
+specificationVersion: '0.19'
+kind: company
 description: >-
-  Alliance Data Systems was a provider of data-driven marketing, loyalty, and
-  private-label credit card services to large consumer-based businesses across
-  multiple industries. The company operated three primary segments: LoyaltyOne
-  (coalition loyalty programs including AIR MILES in Canada), Epsilon (data-
-  driven marketing and technology services), and Card Services (private label
-  and co-brand credit card programs). Alliance Data managed over 135 card
-  programs for retail brands including Victoria's Secret, J.Crew, Pottery Barn,
-  Wayfair, and Williams Sonoma. In March 2022, Alliance Data rebranded as Bread
-  Financial, focusing on digital-first payment solutions including private label
-  credit cards, co-brand cards, and Bread buy-now-pay-later products. Alliance
-  Data's Epsilon subsidiary was sold to Publicis Groupe in 2019. Bread Financial
-  does not maintain a public developer API program but provides B2B integration
-  services to retail card program partners.
-apis: []
-common:
-  - type: Website
-    url: https://www.breadfinancial.com
-  - type: Website
-    url: https://newsroom.breadfinancial.com
+  Alliance Data Systems Corporation (ADS) was a Plano/Columbus-based financial
+  and marketing services holding company built in 1996 from the merger of J.C.
+  Penney's credit card processing unit and The Limited's World Financial Network
+  National Bank, taken public on the NYSE in 2001. The company historically
+  operated three segments — Card Services (private label and co-brand retail
+  credit cards), Epsilon (data-driven marketing and CRM), and LoyaltyOne (the
+  AIR MILES Reward Program in Canada and BrandLoyalty in the Netherlands). In
+  July 2019 ADS sold Epsilon to Publicis Groupe for $4.4 billion. In December
+  2020 ADS acquired Bread, a New York-based BNPL platform, for $450 million.
+  In November 2021 ADS spun off LoyaltyOne as Loyalty Ventures Inc. (LTRN). On
+  March 23, 2022 the remaining card-and-payments business rebranded as Bread
+  Financial Holdings, Inc., with the common stock starting to trade on NYSE
+  under the new ticker BFH on April 4, 2022. Today Bread Financial is a
+  tech-forward financial services company headquartered in Columbus, Ohio
+  (Wikipedia 2024 figures&#58; $3.84B revenue, ~6,000 employees, $22.9B total
+  assets, 135+ managed card programs across partners including Victoria's
+  Secret, Wayfair, Williams-Sonoma, Academy Sports, HP, PlayStation, and the
+  Crypto.com Visa Card). The developer surface lives under the Bread Pay BNPL
+  brand at developer-facing properties docs.breadpayments.com (legacy
+  "bread-classic" Merchant API) and platform-docs.breadpayments.com
+  (next-generation "BreadPay Platform" APIs, OAuth 2.0 Client Credentials,
+  hosted on https://api.platform.breadpayments.com/api), plus a JavaScript
+  Bread SDK (preview + production CDN), iOS/Android mobile SDKs published as
+  the Bread Financial Brand Partners SDKs on github.com/bppub, and platform
+  integrations for Shopify, Magento 2, WooCommerce, BigCommerce, Salesforce
+  Commerce Cloud, Miva, Volusion, and Turbify. The corporate/holding side
+  (private-label and co-brand cards issued through Comenity Bank and Comenity
+  Capital Bank, plus high-yield savings, CDs, IRAs, and personal loans) is
+  delivered through B2B partner integrations rather than a public developer
+  portal.
 tags:
   - Financial Services
-  - Credit Cards
+  - Fintech
+  - Buy Now Pay Later
+  - BNPL
+  - Bread Pay
   - Private Label Credit
+  - Co Brand Credit Cards
   - Loyalty Programs
   - Marketing
   - Data Driven Marketing
-  - Buy Now Pay Later
+  - Payments
+  - Lending
+  - Savings
+  - Personal Loans
+  - Consumer Banking
+  - Retail Finance
   - Fortune 500
+  - NYSE BFH
+  - Comenity Bank
+  - Rebrand
+apis:
+  - name: Bread Pay Platform API
+    description: >-
+      Next-generation BreadPay Platform REST API for managing buyers, merchant
+      accounts, payment options, transaction lifecycle (authorize, cancel,
+      capture, refund), and payment-product servicing. Hosted at
+      api.platform.breadpayments.com with a preview environment at
+      api-preview.platform.breadpayments.com. Authentication is OAuth 2.0
+      Client Credentials Flow with credentials issued from the Bread Merchant
+      Portal.
+    humanURL: https://platform-docs.breadpayments.com/bread-developers
+    baseURL: https://api.platform.breadpayments.com/api
+    tags:
+      - Buy Now Pay Later
+      - BNPL
+      - Payments
+      - Transactions
+      - Buyers
+      - Merchants
+    properties:
+      - type: Documentation
+        url: https://platform-docs.breadpayments.com/bread-developers
+      - type: Concepts
+        url: https://platform-docs.breadpayments.com/bread-developers/docs
+      - type: Authentication
+        url: https://platform-docs.breadpayments.com/bread-developers/docs/api-access
+      - type: APIReference
+        url: https://platform-docs.breadpayments.com/bread-developers/reference
+      - type: OpenAPI
+        url: openapi/bread-pay-platform-openapi.yml
+      - type: SandboxBaseURL
+        url: https://api-preview.platform.breadpayments.com/api
+      - type: ProductionBaseURL
+        url: https://api.platform.breadpayments.com/api
+      - type: Capability
+        url: capabilities/bread-pay-platform-transactions.yaml
+      - type: Capability
+        url: capabilities/bread-pay-platform-buyers.yaml
+  - name: Bread Classic Merchant API
+    description: >-
+      Legacy "bread-classic" REST API for managing Bread checkout transactions,
+      carts, shipping (carrier + tracking) and capture/refund/cancel actions
+      from the original Bread BNPL product, still documented at
+      docs.breadpayments.com for merchants on the prior integration. The
+      Merchant API helps manage completed transactions and carts, which can
+      also be created directly in the browser via the Bread JavaScript SDK.
+    humanURL: https://docs.breadpayments.com/bread-classic/reference/getting-started-with-your-api
+    baseURL: https://api.breadpayments.com
+    tags:
+      - Buy Now Pay Later
+      - BNPL
+      - Merchant
+      - Transactions
+      - Carts
+      - Shipping
+      - Legacy
+    properties:
+      - type: Documentation
+        url: https://docs.breadpayments.com/bread-classic/reference
+      - type: GettingStarted
+        url: https://docs.breadpayments.com/bread-classic/reference/getting-started-with-your-api
+      - type: Checkout
+        url: https://docs.breadpayments.com/bread-classic/docs/bread-checkout
+      - type: Testing
+        url: https://docs.breadpayments.com/bread-classic/docs/testing-bread
+      - type: ManagingTransactions
+        url: https://docs.breadpayments.com/bread-classic/docs/managing-bread-transactions
+      - type: OpenAPI
+        url: openapi/bread-classic-merchant-openapi.yml
+      - type: Capability
+        url: capabilities/bread-classic-transactions.yaml
+  - name: Bread JavaScript SDK
+    description: >-
+      Browser-side JavaScript SDK that exposes the BreadPayments object for
+      rendering the Bread modal, embedded placements, prequalification, and
+      cart/checkout flows on merchant sites. Loaded from Bread CDNs in preview
+      and production environments and initialized with a merchant
+      integrationKey plus buyer object.
+    humanURL: https://platform-docs.breadpayments.com/bread-onboarding/docs/bread-sdk-installation
+    baseURL: https://connect.breadpayments.com
+    tags:
+      - SDK
+      - JavaScript
+      - Web
+      - Checkout
+      - Placements
+      - Prequalification
+    properties:
+      - type: Documentation
+        url: https://platform-docs.breadpayments.com/bread-onboarding/docs/bread-sdk-installation
+      - type: PreviewCDN
+        url: https://connect-preview.breadpayments.com/sdk.js
+      - type: ProductionCDN
+        url: https://connect.breadpayments.com/sdk.js
+      - type: UnifiedSDKOverview
+        url: https://platform-docs.breadpayments.com/bread-onboarding/docs/unified-sdk-overview
+  - name: Bread Financial Brand Partners iOS SDK
+    description: >-
+      Official Bread Financial mobile SDK for iOS published as
+      breadfinancial-brand-partners-ios on the bppub GitHub organization.
+      Provides batch prescreen, unified prequalification, placement rendering,
+      application callbacks, and customer status events for native iOS apps.
+    humanURL: https://github.com/bppub/breadfinancial-brand-partners-ios
+    baseURL: https://github.com/bppub
+    tags:
+      - SDK
+      - Mobile
+      - iOS
+      - Swift
+      - Prequalification
+      - Placements
+    properties:
+      - type: Repository
+        url: https://github.com/bppub/breadfinancial-brand-partners-ios
+      - type: AlternateSwiftRepo
+        url: https://github.com/bppub/breadfinancial-brand-partners-ios-swift
+      - type: Documentation
+        url: https://platform-docs.breadpayments.com/bread-onboarding
+  - name: Bread Financial Brand Partners Android SDK
+    description: >-
+      Official Bread Financial mobile SDK for Android (Kotlin) published as
+      breadfinancial-brand-partners-android on the bppub GitHub organization.
+      Provides batch prescreen, unified prequalification, placement rendering,
+      application callbacks, and customer status events for native Android
+      apps.
+    humanURL: https://github.com/bppub/breadfinancial-brand-partners-android
+    baseURL: https://github.com/bppub
+    tags:
+      - SDK
+      - Mobile
+      - Android
+      - Kotlin
+      - Prequalification
+      - Placements
+    properties:
+      - type: Repository
+        url: https://github.com/bppub/breadfinancial-brand-partners-android
+      - type: Documentation
+        url: https://platform-docs.breadpayments.com/bread-onboarding
+  - name: Bread Webhooks
+    description: >-
+      Outbound webhook system for the BreadPay Platform that notifies merchant
+      systems of transaction lifecycle events. Documented under the BreadPay
+      developer site with setup, concepts, validation, and client
+      implementation guides.
+    humanURL: https://platform-docs.breadpayments.com/bread-developers/docs
+    baseURL: https://platform-docs.breadpayments.com/bread-developers/docs
+    tags:
+      - Webhooks
+      - Events
+      - Transactions
+      - Eventing
+    properties:
+      - type: Documentation
+        url: https://platform-docs.breadpayments.com/bread-developers/docs
+common:
+  - type: Website
+    url: https://www.breadfinancial.com
+  - type: FormerWebsite
+    url: https://www.alliancedata.com
+  - type: BNPLWebsite
+    url: https://www.breadpayments.com
+  - type: BusinessSolutions
+    url: https://www.breadfinancial.com/en/business-solutions.html
+  - type: BuyNowPayLater
+    url: https://www.breadfinancial.com/en/business-solutions/buy-now-pay-later.html
+  - type: Newsroom
+    url: https://newsroom.breadfinancial.com
+  - type: InvestorRelations
+    url: https://investor.breadfinancial.com
+  - type: SECRebrandFiling
+    url: https://www.sec.gov/Archives/edgar/data/0001101215/000110121522000058/form_8-k.htm
+  - type: WikipediaPage
+    url: https://en.wikipedia.org/wiki/Bread_Financial
+  - type: DeveloperPortal
+    url: https://platform-docs.breadpayments.com/bread-developers
+  - type: ClassicDeveloperPortal
+    url: https://docs.breadpayments.com/bread-classic/reference
+  - type: OnboardingDocs
+    url: https://platform-docs.breadpayments.com/bread-onboarding
+  - type: GitHubOrganization
+    url: https://github.com/bppub
+  - type: IntegrationsGitHubOrganization
+    url: https://github.com/breadfinance
+  - type: LegacyGitHubOrganization
+    url: https://github.com/getbread
+  - type: APITracker
+    url: https://apitracker.io/a/breadpayments
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/bread-financial
+  - type: Plans
+    url: plans/alliance-data-systems-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/alliance-data-systems-rate-limits.yml
+  - type: FinOps
+    url: finops/alliance-data-systems-finops.yml
+  - type: Vocabulary
+    url: vocabulary/alliance-data-systems-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/alliance-data-systems-context.jsonld
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

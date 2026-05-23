@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-schema/bread-pay-platform-buyer-schema.json",
+  "title": "BreadPayPlatformBuyer",
+  "description": "Bread Pay Platform buyer record used to personalize payment options and pricing.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "familyName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "billingAddress": {
+      "$ref": "bread-pay-platform-address-schema.json"
+    },
+    "shippingAddress": {
+      "$ref": "bread-pay-platform-address-schema.json"
+    }
+  }
+}

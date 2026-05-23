@@ -1,0 +1,36 @@
+extends:
+  - spectral:oas
+formats:
+  - oas3
+
+functions: []
+
+rules:
+  bread-classic-title-case-summary:
+    description: "Bread Classic operation summaries must be Title Case and prefixed with 'Bread Classic '."
+    given: $.paths[*][get,post,put,delete,patch].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Bread Classic [A-Z][A-Za-z]+( [A-Z][A-Za-z]+){0,8}$"
+
+  bread-classic-bearer-auth:
+    description: "Bread Classic operations must use bearer token authentication."
+    given: $.components.securitySchemes
+    severity: error
+    then:
+      field: bearerAuth.scheme
+      function: pattern
+      functionOptions:
+        match: "^bearer$"
+
+  bread-classic-amounts-minor-units:
+    description: "Legacy Bread Classic monetary fields are integers in minor units."
+    given: $.components.schemas.ClassicTransaction.properties
+    severity: warn
+    then:
+      field: amount.type
+      function: pattern
+      functionOptions:
+        match: "^integer$"

@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.platform.breadpayments.com/api/transaction/9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOi...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "status": "AUTHORIZED",
+      "amount": {
+        "value": 24999,
+        "currency": "USD"
+      },
+      "buyerId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "merchantOfRecordID": "0bd9d8d4-3f3b-4f8e-9c91-2c1a2b1e1234",
+      "createdOn": "2026-05-23T12:00:00Z",
+      "modifiedOn": "2026-05-23T12:01:30Z"
+    }
+  }
+}

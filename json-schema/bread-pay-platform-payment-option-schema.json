@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-schema/bread-pay-platform-payment-option-schema.json",
+  "title": "BreadPayPlatformPaymentOption",
+  "description": "Personalized Bread Pay payment option (SplitPay, Installments, or Card) returned for a buyer context.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "productType": {
+      "type": "string",
+      "enum": ["SPLIT_PAY", "INSTALLMENTS", "CARD"]
+    },
+    "termMonths": { "type": "integer" },
+    "apr": { "type": "number" },
+    "monthlyPayment": {
+      "$ref": "bread-pay-platform-amount-schema.json"
+    }
+  }
+}

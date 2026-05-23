@@ -1,0 +1,57 @@
+extends:
+  - spectral:oas
+formats:
+  - oas3
+
+functions: []
+
+rules:
+  bread-pay-title-case-summary:
+    description: "Bread Pay operation summaries must be Title Case and prefixed with 'Bread Pay '."
+    given: $.paths[*][get,post,put,delete,patch].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Bread Pay [A-Z][A-Za-z]+( [A-Z][A-Za-z]+){0,8}$"
+
+  bread-pay-amount-minor-units:
+    description: "Monetary amount objects must use {value: integer, currency: ISO-4217}."
+    given: $.components.schemas.Amount.properties
+    severity: error
+    then:
+      - field: value.type
+        function: pattern
+        functionOptions:
+          match: "^integer$"
+      - field: currency.type
+        function: pattern
+        functionOptions:
+          match: "^string$"
+
+  bread-pay-oauth-security:
+    description: "Operations must declare OAuth 2.0 client_credentials as the security scheme."
+    given: $.components.securitySchemes
+    severity: error
+    then:
+      field: oauth2ClientCredentials.flows.clientCredentials.tokenUrl
+      function: truthy
+
+  bread-pay-base-url-versioning:
+    description: "Servers must include both production and preview Bread Pay base URLs."
+    given: $.servers
+    severity: warn
+    then:
+      function: length
+      functionOptions:
+        min: 2
+
+  bread-pay-transaction-id-uuid:
+    description: "Transaction IDs must be uuid format."
+    given: $.paths['/transaction/{transactionID}'].parameters
+    severity: warn
+    then:
+      field: schema.format
+      function: pattern
+      functionOptions:
+        match: "^uuid$"

@@ -1,0 +1,49 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Alliance Data Systems (Bread Financial Holdings)
+providerId: alliance-data-systems
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: false
+tags:
+  - Financial Services
+  - Fintech
+  - Buy Now Pay Later
+  - BNPL
+  - Bread Pay
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: >-
+  Bread Pay does not publish a specific per-key rate limit on its public docs.
+  The platform-docs.breadpayments.com developer site documents standard HTTP
+  status codes (including 429 for throttling and 503 for service unavailable
+  on the authorize-transaction surface) but does not specify request-per-second
+  or request-per-minute caps. Merchants on contracted volume should coordinate
+  through their Bread integration manager.
+notes: >-
+  Initial scaffold — explicit numeric limits are not published. Clients should
+  implement exponential backoff with jitter and respect Retry-After.
+sources:
+  - https://platform-docs.breadpayments.com/bread-developers/docs/api-access
+  - https://platform-docs.breadpayments.com/bread-developers/reference/authorizetransaction
+  - https://docs.breadpayments.com/bread-classic/reference
+responseCodes:
+  throttled: 429
+  serviceUnavailable: 503
+limits:
+  - name: Default Platform Limit
+    scope: client_id
+    metric: requests
+    limit: not published
+    timeFrame: per_minute
+    notes: Pending reconciliation; coordinate through Bread integration manager for high-volume merchants.
+policies:
+  - name: Backoff Strategy
+    description: Clients should implement exponential backoff with jitter and honor any Retry-After header on 429 and 503 responses.
+  - name: Concurrency
+    description: Not documented; treat as conservative until quantified.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

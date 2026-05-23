@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-schema/bread-classic-transaction-schema.json",
+  "title": "BreadClassicTransaction",
+  "description": "Bread Classic (legacy) transaction object.",
+  "type": "object",
+  "required": ["id", "status", "amount"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["PENDING", "AUTHORIZED", "SETTLED", "CANCELLED", "REFUNDED"]
+    },
+    "amount": {
+      "type": "integer",
+      "description": "Amount in minor units."
+    },
+    "currency": { "type": "string" },
+    "merchantId": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  }
+}

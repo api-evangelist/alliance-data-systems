@@ -1,0 +1,102 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Alliance Data Systems (Bread Financial Holdings)
+providerId: alliance-data-systems
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: false
+tags:
+  - Financial Services
+  - Fintech
+  - Buy Now Pay Later
+  - BNPL
+  - Bread Pay
+  - Private Label Credit
+  - Co Brand Credit Cards
+  - Plans
+description: >-
+  Bread Financial (formerly Alliance Data Systems) does not publish a self-serve
+  developer pricing page for the Bread Pay BNPL API. The commercial relationship
+  is a B2B contract negotiated with merchants and retail partners — merchant
+  discount rate, integration fees, and consumer financing economics (APR,
+  installment terms) are all set per-contract by the Bread Merchant
+  Relationships team. Bread Pay consumer plans on the buyer side include
+  SplitPay (typically 4 interest-free payments) and longer-term Installments
+  (3–48 months, APRs vary), surfaced dynamically via the Payment Options API.
+notes: >-
+  Initial scaffold — merchant pricing is not publicly listed; consumer-side
+  product terms are surfaced through the API rather than a static plan page.
+sources:
+  - https://www.breadfinancial.com/en/business-solutions/buy-now-pay-later.html
+  - https://www.breadpayments.com/
+  - https://platform-docs.breadpayments.com/bread-developers
+  - https://docs.breadpayments.com/bread-classic/reference
+plans:
+  - id: bread-pay-merchant
+    name: Bread Pay Merchant (Contract)
+    type: enterprise
+    description: >-
+      Per-contract merchant pricing for Bread Pay BNPL integration. Merchant
+      discount rate (MDR), integration setup fees, and revenue share are
+      negotiated directly with Bread Financial.
+    entries:
+      - label: API Access
+        name: api_access
+        type: included
+        metric: requests
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: included in merchant contract
+        userMultiplied: false
+      - label: Merchant Discount Rate
+        name: mdr
+        type: percent
+        metric: gmv
+        limit: -1
+        timeFrame: per_transaction
+        geo: US
+        unit: 1
+        price: see merchant contract
+        userMultiplied: false
+    elements:
+      - name: Pending Reconciliation
+  - id: bread-pay-splitpay
+    name: Bread Pay SplitPay (Consumer)
+    type: consumer
+    description: Short-term interest-free pay-in-N option offered to consumers at checkout.
+    entries:
+      - label: Installments
+        name: splitpay_installments
+        type: fixed
+        metric: payments
+        limit: 4
+        timeFrame: 6_weeks
+        geo: US
+        unit: 1
+        price: 0% APR
+        userMultiplied: false
+    elements:
+      - name: Consumer SKU
+  - id: bread-pay-installments
+    name: Bread Pay Installments (Consumer)
+    type: consumer
+    description: Longer-term installment loans (3–48 months) with APR set by underwriting.
+    entries:
+      - label: Term
+        name: term_months
+        type: range
+        metric: months
+        limit: 48
+        timeFrame: lifetime
+        geo: US
+        unit: 1
+        price: APR varies by underwriting
+        userMultiplied: false
+    elements:
+      - name: Consumer SKU
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

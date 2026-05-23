@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.platform.breadpayments.com/api/transaction/9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d/refund",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOi...",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "amount": {
+        "value": 5000,
+        "currency": "USD"
+      },
+      "reason": "Customer returned one item"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "status": "REFUNDED",
+      "amount": {
+        "value": 24999,
+        "currency": "USD"
+      },
+      "buyerId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "modifiedOn": "2026-05-24T15:42:00Z"
+    }
+  }
+}

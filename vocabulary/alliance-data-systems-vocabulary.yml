@@ -1,0 +1,139 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Alliance Data Systems (Bread Financial Holdings)"
+  description: "Unified taxonomy for the legacy Alliance Data Systems holding company and its successor Bread Financial Holdings (NYSE BFH), covering corporate structure (rebrand, spinoffs, divestitures), regulated banking subsidiaries (Comenity Bank, Comenity Capital Bank), and the active Bread Pay BNPL API surface."
+  created: "2026-04-19"
+  modified: "2026-05-23"
+
+corporate:
+  legalEntities:
+    - name: Bread Financial Holdings, Inc.
+      ticker: BFH
+      exchange: NYSE
+      headquarters: Columbus, Ohio
+      formerName: Alliance Data Systems Corporation
+      rebrandedOn: "2022-03-23"
+      tickerListedOn: "2022-04-04"
+    - name: Alliance Data Systems Corporation
+      formed: "1996-12"
+      ipo: "2001"
+      formerTicker: ADS
+      status: rebranded
+  subsidiaries:
+    - name: Comenity Bank
+      type: Utah state-chartered industrial bank
+      role: Private-label and co-brand card issuer
+    - name: Comenity Capital Bank
+      type: Utah state-chartered bank
+      role: Co-brand and direct-to-consumer deposit issuer
+    - name: Bread
+      acquiredOn: "2020-12"
+      acquisitionPrice: "$450M"
+      role: BNPL platform; brand inherited by parent in 2022 rebrand
+  divestitures:
+    - name: Epsilon
+      buyer: Publicis Groupe
+      closedOn: "2019-07"
+      price: "$4.4B"
+      segment: Data-driven marketing and CRM
+    - name: LoyaltyOne
+      vehicle: Loyalty Ventures Inc.
+      ticker: LTRN
+      spinoffOn: "2021-11"
+      contents: AIR MILES Reward Program (Canada), BrandLoyalty (Netherlands)
+
+operational:
+  apis:
+    - namespace: bread-pay-platform
+      name: Bread Pay Platform API
+      version: "1.0"
+      baseUrl: https://api.platform.breadpayments.com/api
+      previewBaseUrl: https://api-preview.platform.breadpayments.com/api
+      auth: oauth2-client-credentials
+      status: active
+    - namespace: bread-classic-merchant
+      name: Bread Classic Merchant API
+      version: "1.0"
+      baseUrl: https://api.breadpayments.com
+      auth: bearer
+      status: legacy
+    - namespace: bread-js-sdk
+      name: Bread JavaScript SDK
+      version: "1.0"
+      baseUrl: https://connect.breadpayments.com/sdk.js
+      previewBaseUrl: https://connect-preview.breadpayments.com/sdk.js
+      auth: integration-key
+      status: active
+    - namespace: bread-mobile-ios
+      name: Bread Financial Brand Partners iOS SDK
+      repo: https://github.com/bppub/breadfinancial-brand-partners-ios
+      language: Swift
+      status: active
+    - namespace: bread-mobile-android
+      name: Bread Financial Brand Partners Android SDK
+      repo: https://github.com/bppub/breadfinancial-brand-partners-android
+      language: Kotlin
+      status: active
+    - namespace: bread-webhooks
+      name: Bread Webhooks
+      version: "1.0"
+      status: active
+
+  resources:
+    - name: buyers
+      description: "Buyer records used to personalize Bread Pay options and pricing."
+      apis: [bread-pay-platform]
+      actions: [get]
+    - name: transactions
+      description: "BNPL transactions covering the create/authorize/cancel/settle/refund lifecycle."
+      apis: [bread-pay-platform, bread-classic-merchant]
+      actions: [create, get, authorize, cancel, settle, refund]
+    - name: carts
+      description: "Legacy Bread cart objects driving the in-browser checkout."
+      apis: [bread-classic-merchant]
+      actions: [create, get]
+    - name: shipping
+      description: "Carrier and tracking number attached to a transaction."
+      apis: [bread-classic-merchant]
+      actions: [add, get]
+    - name: payment-options
+      description: "Personalized payment options and pricing for a buyer."
+      apis: [bread-pay-platform]
+      actions: [list]
+
+capability:
+  workflows:
+    - name: bnpl-checkout-and-settlement
+      description: "End-to-end Bread Pay BNPL flow from cart to settled funds."
+      steps:
+        - get-buyer
+        - list-payment-options
+        - create-transaction
+        - authorize-transaction
+        - add-transaction-shipping
+        - settle-transaction
+    - name: refund-handling
+      description: "Refund a previously settled Bread Pay transaction."
+      steps:
+        - get-transaction
+        - refund-transaction
+  personas:
+    - merchant-developer
+    - merchant-operations
+    - retail-partner
+    - bnpl-buyer
+
+domains:
+  - financial-services
+  - bnpl
+  - retail-finance
+  - private-label-credit
+  - cobrand-credit
+  - consumer-banking
+  - payments
+
+former-domains:
+  - data-driven-marketing
+  - loyalty-programs
+  - air-miles

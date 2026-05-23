@@ -1,0 +1,43 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.breadpayments.com/carts",
+    "headers": {
+      "Authorization": "Bearer YOUR_LEGACY_TOKEN",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "currency": "USD",
+      "items": [
+        {
+          "name": "Modern Sofa",
+          "sku": "SOFA-001",
+          "unitPrice": 89900,
+          "quantity": 1,
+          "imageUrl": "https://example.com/sofa.jpg"
+        }
+      ],
+      "discounts": [
+        {
+          "description": "Spring sale",
+          "amount": 5000
+        }
+      ],
+      "shipping": {
+        "typeId": "standard",
+        "cost": 4900
+      },
+      "tax": 7400,
+      "totalPrice": 96200
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": "cart_AbCdEfGhIj",
+      "currency": "USD",
+      "totalPrice": 96200,
+      "createdAt": "2026-05-23T12:00:00Z"
+    }
+  }
+}

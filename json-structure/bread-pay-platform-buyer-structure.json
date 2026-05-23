@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/2025-09/extended/",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-structure/bread-pay-platform-buyer-structure.json",
+  "name": "BreadPayPlatformBuyer",
+  "description": "Structural representation of a Bread Pay buyer.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "givenName": { "type": "string" },
+    "familyName": { "type": "string" },
+    "email": { "type": "string" },
+    "phone": { "type": "string" },
+    "billingAddress": { "$ref": "bread-pay-platform-address-structure.json" },
+    "shippingAddress": { "$ref": "bread-pay-platform-address-structure.json" }
+  },
+  "required": ["id"]
+}

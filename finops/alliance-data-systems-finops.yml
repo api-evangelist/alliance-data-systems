@@ -1,0 +1,90 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Alliance Data Systems (Bread Financial Holdings)
+providerId: alliance-data-systems
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: false
+tags:
+  - Financial Services
+  - Fintech
+  - Buy Now Pay Later
+  - BNPL
+  - Bread Pay
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: >-
+  FOCUS-aligned FinOps placeholder for Bread Financial. The Bread Pay BNPL
+  product is not consumed via a metered SaaS billing surface; commercial terms
+  flow through a B2B merchant contract (merchant discount rate, monthly
+  reporting, settlement statements from Comenity Bank / Comenity Capital
+  Bank). Treat Bread invoices as the canonical billing artifact and reconcile
+  per merchant ID.
+notes: >-
+  Initial scaffold — there is no self-serve usage export. Pull merchant
+  settlement statements from the Bread Merchant Portal and reconcile in your
+  FinOps store against your transaction system of record.
+sources:
+  - https://www.breadfinancial.com/en/business-solutions/buy-now-pay-later.html
+  - https://platform-docs.breadpayments.com/bread-developers
+  - https://docs.breadpayments.com/bread-classic/reference
+  - https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Bread Financial Holdings
+serviceCategory: Financial Services
+billingModel:
+  pricingCategory: Merchant Discount Rate + Integration Fees
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Adjustment
+focusColumns:
+  ServiceName: Bread Pay
+  ServiceCategory: BNPL
+  ProviderName: Bread Financial Holdings
+  PublisherName: Bread Financial Holdings
+  InvoiceIssuerName: Comenity Capital Bank
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: transactions_authorized
+    description: Count of authorized Bread Pay transactions per merchant.
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - merchantId
+      - productType
+  - name: gmv_processed
+    description: Gross merchandise value processed through Bread Pay (minor units).
+    unit: USD
+    aggregation: sum
+    dimensions:
+      - merchantId
+      - productType
+  - name: merchant_discount_rate
+    description: MDR applied to GMV per merchant contract.
+    unit: percent
+    aggregation: weighted_average
+    dimensions:
+      - merchantId
+principles:
+  - name: Visibility
+    description: Pull monthly Bread merchant statements and reconcile against your transaction system of record.
+  - name: Allocation
+    description: Tag transactions with merchantId + productType to attribute Bread costs to consuming business units.
+  - name: Optimization
+    description: Renegotiate MDR at contract renewal based on volume tiers; mix product types (SplitPay vs Installments) to match buyer LTV.
+  - name: Accountability
+    description: Assign a Bread merchant relationship owner per legal entity to review monthly statements.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

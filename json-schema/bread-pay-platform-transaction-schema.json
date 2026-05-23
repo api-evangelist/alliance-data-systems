@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-schema/bread-pay-platform-transaction-schema.json",
+  "title": "BreadPayPlatformTransaction",
+  "description": "Bread Pay Platform transaction object representing a single BNPL purchase lifecycle entry.",
+  "type": "object",
+  "required": ["id", "status", "amount", "buyerId"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PENDING", "AUTHORIZED", "SETTLED", "CANCELLED", "REFUNDED", "EXPIRED"]
+    },
+    "amount": {
+      "$ref": "bread-pay-platform-amount-schema.json"
+    },
+    "buyerId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "merchantOfRecordID": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "merchantNote": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "createdOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modifiedOn": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

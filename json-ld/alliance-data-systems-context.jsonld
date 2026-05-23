@@ -1,0 +1,114 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bread": "https://breadfinancial.com/schema/",
+    "ads": "https://breadfinancial.com/schema/legacy/alliance-data-systems/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Organization": "schema:Organization",
+    "FinancialProduct": "schema:FinancialProduct",
+    "LoanOrCredit": "schema:LoanOrCredit",
+    "Brand": "schema:Brand",
+
+    "BreadFinancialHoldings": "bread:BreadFinancialHoldings",
+    "AllianceDataSystems": "ads:AllianceDataSystems",
+    "ComenityBank": "bread:ComenityBank",
+    "BreadPay": "bread:BreadPay",
+    "SplitPay": "bread:SplitPay",
+    "Installments": "bread:Installments",
+
+    "Buyer": "bread:Buyer",
+    "Transaction": "bread:Transaction",
+    "Cart": "bread:Cart",
+    "PaymentOption": "bread:PaymentOption",
+    "MerchantOfRecord": "bread:MerchantOfRecord",
+    "Address": "schema:PostalAddress",
+
+    "id": "@id",
+    "name": "schema:name",
+    "email": "schema:email",
+    "phone": "schema:telephone",
+    "givenName": "schema:givenName",
+    "familyName": "schema:familyName",
+
+    "amount": {
+      "@id": "bread:amount",
+      "@type": "@id"
+    },
+    "value": {
+      "@id": "bread:value",
+      "@type": "xsd:integer"
+    },
+    "currency": {
+      "@id": "schema:priceCurrency",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "bread:status",
+      "@type": "xsd:string"
+    },
+    "createdOn": {
+      "@id": "dcterms:created",
+      "@type": "xsd:dateTime"
+    },
+    "modifiedOn": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    },
+    "buyerId": {
+      "@id": "bread:buyerId",
+      "@type": "xsd:string"
+    },
+    "merchantOfRecordID": {
+      "@id": "bread:merchantOfRecordID",
+      "@type": "xsd:string"
+    },
+    "merchantNote": {
+      "@id": "bread:merchantNote",
+      "@type": "xsd:string"
+    },
+
+    "address1": "schema:streetAddress",
+    "locality": "schema:addressLocality",
+    "region": "schema:addressRegion",
+    "postalCode": "schema:postalCode",
+    "country": "schema:addressCountry",
+
+    "carrier": "bread:carrier",
+    "trackingNumber": "schema:trackingNumber",
+    "shippedAt": "bread:shippedAt",
+
+    "productType": "bread:productType",
+    "termMonths": {
+      "@id": "bread:termMonths",
+      "@type": "xsd:integer"
+    },
+    "apr": {
+      "@id": "bread:apr",
+      "@type": "xsd:decimal"
+    },
+    "monthlyPayment": {
+      "@id": "bread:monthlyPayment",
+      "@type": "@id"
+    },
+
+    "previousName": "schema:alternateName",
+    "tickerSymbol": "schema:tickerSymbol",
+    "founded": "schema:foundingDate",
+    "renamedOn": "bread:renamedOn",
+    "spinoffs": {
+      "@id": "bread:spinoffs",
+      "@container": "@set"
+    },
+    "divestitures": {
+      "@id": "bread:divestitures",
+      "@container": "@set"
+    },
+    "subsidiaries": {
+      "@id": "schema:subOrganization",
+      "@container": "@set"
+    }
+  }
+}

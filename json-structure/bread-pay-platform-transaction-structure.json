@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/2025-09/extended/",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-structure/bread-pay-platform-transaction-structure.json",
+  "name": "BreadPayPlatformTransaction",
+  "description": "Structural representation of a Bread Pay Platform transaction used in the BNPL lifecycle.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "status": { "type": "string" },
+    "amount": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "int32" },
+        "currency": { "type": "string" }
+      }
+    },
+    "buyerId": { "type": "string" },
+    "merchantOfRecordID": { "type": "string" },
+    "merchantNote": { "type": "string" },
+    "createdOn": { "type": "string" },
+    "modifiedOn": { "type": "string" }
+  },
+  "required": ["id", "status", "amount", "buyerId"]
+}

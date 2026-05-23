@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/2025-09/extended/",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-structure/bread-classic-cart-structure.json",
+  "name": "BreadClassicCart",
+  "description": "Structural representation of a Bread Classic cart.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "currency": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "sku": { "type": "string" },
+          "unitPrice": { "type": "int32" },
+          "quantity": { "type": "int32" },
+          "imageUrl": { "type": "string" }
+        }
+      }
+    },
+    "tax": { "type": "int32" },
+    "totalPrice": { "type": "int32" },
+    "createdAt": { "type": "string" }
+  },
+  "required": ["currency", "totalPrice"]
+}

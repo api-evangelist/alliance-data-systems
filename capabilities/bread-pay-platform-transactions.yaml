@@ -1,0 +1,220 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Bread Pay Platform — Transactions
+  description: 'Bread Pay Platform API — Transactions. 6 operations covering create, get, authorize, cancel, settle, refund. Self-contained Naftiko capability for one Bread Financial business surface.'
+  tags:
+    - Bread Pay
+    - Bread Financial
+    - BNPL
+    - Transactions
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      BREAD_CLIENT_ID: BREAD_CLIENT_ID
+      BREAD_CLIENT_SECRET: BREAD_CLIENT_SECRET
+capability:
+  consumes:
+    - type: http
+      namespace: bread-pay-platform-transactions
+      baseUri: https://api.platform.breadpayments.com/api
+      description: Bread Pay Platform Transactions consumer. Self-contained, no shared references.
+      resources:
+        - name: transaction
+          path: /transaction
+          operations:
+            - name: createTransaction
+              method: POST
+              description: Bread Pay Create A Transaction
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  description: Request body (JSON).
+                  required: true
+        - name: transaction-id
+          path: /transaction/{transactionID}
+          operations:
+            - name: getTransaction
+              method: GET
+              description: Bread Pay Get A Transaction
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: transaction-id-authorize
+          path: /transaction/{transactionID}/authorize
+          operations:
+            - name: authorizeTransaction
+              method: POST
+              description: Bread Pay Authorize A Transaction
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+        - name: transaction-id-cancel
+          path: /transaction/{transactionID}/cancel
+          operations:
+            - name: cancelTransaction
+              method: POST
+              description: Bread Pay Cancel A Transaction
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: transaction-id-settle
+          path: /transaction/{transactionID}/settle
+          operations:
+            - name: settleTransaction
+              method: POST
+              description: Bread Pay Settle A Transaction
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: false
+        - name: transaction-id-refund
+          path: /transaction/{transactionID}/refund
+          operations:
+            - name: refundTransaction
+              method: POST
+              description: Bread Pay Refund A Transaction
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+      authentication:
+        type: oauth2
+        flow: client_credentials
+        tokenUrl: https://auth.platform.breadpayments.com/auth/sso/token
+        clientId: '{{env.BREAD_CLIENT_ID}}'
+        clientSecret: '{{env.BREAD_CLIENT_SECRET}}'
+  exposes:
+    - type: rest
+      namespace: bread-pay-platform-transactions-rest
+      port: 8080
+      description: REST adapter for Bread Pay Platform Transactions, prefixed with /v1.
+      resources:
+        - path: /v1/transaction
+          name: transaction
+          description: REST surface for transaction.
+          operations:
+            - method: POST
+              name: createTransaction
+              description: Bread Pay Create A Transaction
+              call: bread-pay-platform-transactions.createTransaction
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/transaction/{transactionID}
+          name: transaction-id
+          description: REST surface for a single transaction.
+          operations:
+            - method: GET
+              name: getTransaction
+              description: Bread Pay Get A Transaction
+              call: bread-pay-platform-transactions.getTransaction
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: bread-pay-platform-transactions-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Bread Pay Platform Transactions. One tool per consumed operation.
+      tools:
+        - name: bread-pay-create-transaction
+          description: Bread Pay Create A Transaction
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: bread-pay-platform-transactions.createTransaction
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: bread-pay-get-transaction
+          description: Bread Pay Get A Transaction
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: bread-pay-platform-transactions.getTransaction
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: bread-pay-authorize-transaction
+          description: Bread Pay Authorize A Transaction
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: bread-pay-platform-transactions.authorizeTransaction
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: bread-pay-cancel-transaction
+          description: Bread Pay Cancel A Transaction
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: bread-pay-platform-transactions.cancelTransaction
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: bread-pay-settle-transaction
+          description: Bread Pay Settle A Transaction
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: bread-pay-platform-transactions.settleTransaction
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: bread-pay-refund-transaction
+          description: Bread Pay Refund A Transaction
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: false
+          call: bread-pay-platform-transactions.refundTransaction
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.

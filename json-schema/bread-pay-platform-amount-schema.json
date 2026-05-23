@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/main/json-schema/bread-pay-platform-amount-schema.json",
+  "title": "BreadPayPlatformAmount",
+  "description": "Monetary amount expressed in minor units (e.g. cents) with an ISO 4217 currency code.",
+  "type": "object",
+  "required": ["value", "currency"],
+  "properties": {
+    "value": {
+      "type": "integer",
+      "description": "Amount in minor units (e.g. 24999 = $249.99)."
+    },
+    "currency": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3,
+      "example": "USD"
+    }
+  }
+}
