@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bread Pay Platform API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.platform.breadpayments.com/auth/sso/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Buyers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Pay Get A Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.platform.breadpayments.com/api/buyer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a buyer record by Bread buyer identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Pay Create A Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.platform.breadpayments.com/api/transaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Bread Pay transaction for an authorized buyer."
+        },
+        {
+          "info": {
+            "name": "Bread Pay Get A Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.platform.breadpayments.com/api/transaction/:transactionID",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single transaction by its unique transaction ID."
+        },
+        {
+          "info": {
+            "name": "Bread Pay Authorize A Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.platform.breadpayments.com/api/transaction/:transactionID/authorize",
+            "headers": [
+              {
+                "name": "If-Match",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authorize a single transaction based on its unique transaction ID, either for the full amount or a partial amount."
+        },
+        {
+          "info": {
+            "name": "Bread Pay Cancel A Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.platform.breadpayments.com/api/transaction/:transactionID/cancel",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel an authorized but un-captured transaction."
+        },
+        {
+          "info": {
+            "name": "Bread Pay Settle A Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.platform.breadpayments.com/api/transaction/:transactionID/settle",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Settle (capture) the funds for an authorized transaction."
+        },
+        {
+          "info": {
+            "name": "Bread Pay Refund A Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.platform.breadpayments.com/api/transaction/:transactionID/refund",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refund a previously settled transaction in full or in part."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payment Options",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Pay List Payment Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.platform.breadpayments.com/api/payment-options"
+          },
+          "docs": "List personalized Bread Pay payment options and pricing for the authenticated buyer context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

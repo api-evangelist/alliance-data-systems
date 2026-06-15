@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bread Classic Merchant API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Carts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Classic Create A Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.breadpayments.com/carts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Bread cart that can be referenced by the on-page Bread modal."
+        },
+        {
+          "info": {
+            "name": "Bread Classic Get A Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.breadpayments.com/carts/:cartID",
+            "params": [
+              {
+                "name": "cartID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a Bread cart by its identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Classic Get A Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.breadpayments.com/transactions/:transactionID",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return a Bread transaction object."
+        },
+        {
+          "info": {
+            "name": "Bread Classic Update A Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.breadpayments.com/transactions/:transactionID",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update transaction state (e.g. authorize, cancel, settle, refund) via the legacy Merchant API."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Shipping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Classic Get Transaction Shipping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.breadpayments.com/transactions/:transactionID/shipping",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return fulfillment details including carrier and tracking number for the transaction."
+        },
+        {
+          "info": {
+            "name": "Bread Classic Add Transaction Shipping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.breadpayments.com/transactions/:transactionID/shipping",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add fulfillment details including carrier and tracking number to a transaction. Required for settlement on shipped-goods orders."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

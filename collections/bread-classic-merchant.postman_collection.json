@@ -1,0 +1,680 @@
+{
+  "item": [
+    {
+      "id": "84308c33-c624-4bdc-902e-b18735990617",
+      "name": "Carts",
+      "description": {
+        "content": "Manage Bread shopping carts that initiate the BNPL checkout flow.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44278631-ca74-4699-8717-fd44e996e59b",
+          "name": "Bread Classic Create A Cart",
+          "request": {
+            "name": "Bread Classic Create A Cart",
+            "description": {
+              "content": "Create a Bread cart that can be referenced by the on-page Bread modal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "carts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"imageUrl\": \"<uri>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"imageUrl\": \"<uri>\"\n    }\n  ],\n  \"discounts\": [\n    {\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\"\n    }\n  ],\n  \"shipping\": {\n    \"typeId\": \"<string>\",\n    \"cost\": \"<integer>\"\n  },\n  \"tax\": \"<integer>\",\n  \"totalPrice\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f96317a-2c60-4771-8777-d21d2de7617a",
+              "name": "Cart created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"USD\",\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 3491,\n      \"quantity\": 4428,\n      \"imageUrl\": \"https://isonbEQGx.aqzJFAvJmaA.t7RFiuZBfqY0rJq2L6BHj0g4RhGSeJu2S,CC2MPGX.bSP4h0\"\n    },\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 2101,\n      \"quantity\": 5557,\n      \"imageUrl\": \"https://NMqBxCV.asyT-gXw4FqRIvvvMeuwdRwfML,iwPr3O-kq\"\n    }\n  ],\n  \"discounts\": [\n    {\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\"\n    }\n  ],\n  \"shipping\": {\n    \"typeId\": \"<string>\",\n    \"cost\": \"<integer>\"\n  },\n  \"tax\": \"<integer>\",\n  \"totalPrice\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"USD\",\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 4086,\n      \"quantity\": 5417,\n      \"imageUrl\": \"http://fdGrfQZjouhkJAymnP.nvTNLaoY242TBva\"\n    },\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 8975,\n      \"quantity\": 1368,\n      \"imageUrl\": \"http://RQrOHVstyITQamv.spLtSqMGl-aTpe\"\n    }\n  ],\n  \"discounts\": [\n    {\n      \"description\": \"string\",\n      \"amount\": 5798\n    },\n    {\n      \"description\": \"string\",\n      \"amount\": 6517\n    }\n  ],\n  \"shipping\": {\n    \"typeId\": \"string\",\n    \"cost\": 4099\n  },\n  \"tax\": 5431,\n  \"totalPrice\": 9199,\n  \"id\": \"string\",\n  \"createdAt\": \"1972-01-20T14:38:49.333Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d5a621f-2f62-4386-aac7-9b675859a4e8",
+          "name": "Bread Classic Get A Cart",
+          "request": {
+            "name": "Bread Classic Get A Cart",
+            "description": {
+              "content": "Retrieve a Bread cart by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "carts",
+                ":cartID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cartID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "989db391-5b03-4758-9020-fa3bbe604a56",
+              "name": "Cart returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carts",
+                    ":cartID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cartID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"USD\",\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 4086,\n      \"quantity\": 5417,\n      \"imageUrl\": \"http://fdGrfQZjouhkJAymnP.nvTNLaoY242TBva\"\n    },\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 8975,\n      \"quantity\": 1368,\n      \"imageUrl\": \"http://RQrOHVstyITQamv.spLtSqMGl-aTpe\"\n    }\n  ],\n  \"discounts\": [\n    {\n      \"description\": \"string\",\n      \"amount\": 5798\n    },\n    {\n      \"description\": \"string\",\n      \"amount\": 6517\n    }\n  ],\n  \"shipping\": {\n    \"typeId\": \"string\",\n    \"cost\": 4099\n  },\n  \"tax\": 5431,\n  \"totalPrice\": 9199,\n  \"id\": \"string\",\n  \"createdAt\": \"1972-01-20T14:38:49.333Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6bd04afa-f29b-4b6f-9254-f5d2135f59d3",
+      "name": "Transactions",
+      "description": {
+        "content": "Manage completed Bread Pay transactions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ed0d765-e1b5-43e4-abcb-a1c0bf25518b",
+          "name": "Bread Classic Get A Transaction",
+          "request": {
+            "name": "Bread Classic Get A Transaction",
+            "description": {
+              "content": "Return a Bread transaction object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":transactionID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "403432b3-2fa6-48d7-8b57-93b9c964b456",
+              "name": "Transaction returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":transactionID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"SETTLED\",\n  \"amount\": 8893,\n  \"currency\": \"string\",\n  \"merchantId\": \"string\",\n  \"createdAt\": \"1971-01-16T17:45:22.815Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aaa83004-dfcc-4be2-85bb-711d1d2b1f93",
+          "name": "Bread Classic Update A Transaction",
+          "request": {
+            "name": "Bread Classic Update A Transaction",
+            "description": {
+              "content": "Update transaction state (e.g. authorize, cancel, settle, refund) via the legacy Merchant API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":transactionID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"amount\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff62ef80-eebf-4ffb-9ecf-d62a92e51571",
+              "name": "Transaction updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":transactionID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"SETTLED\",\n  \"amount\": 8893,\n  \"currency\": \"string\",\n  \"merchantId\": \"string\",\n  \"createdAt\": \"1971-01-16T17:45:22.815Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "dcc472d9-bfd4-4e49-a6c9-096072de16a7",
+      "name": "Shipping",
+      "description": {
+        "content": "Attach carrier and tracking-number information to a transaction.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b4830b97-4b44-4e3d-b86a-a230f8acbd32",
+          "name": "Bread Classic Add Transaction Shipping",
+          "request": {
+            "name": "Bread Classic Add Transaction Shipping",
+            "description": {
+              "content": "Add fulfillment details including carrier and tracking number to a transaction. Required for settlement on shipped-goods orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":transactionID",
+                "shipping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"carrier\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"shippedAt\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95aa5bd3-a2f3-4c10-b3c6-db8d0ca043e3",
+              "name": "Shipping recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":transactionID",
+                    "shipping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"carrier\": \"<string>\",\n  \"trackingNumber\": \"<string>\",\n  \"shippedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65b55dce-0198-45ba-a7ee-ebbb6f2e8887",
+          "name": "Bread Classic Get Transaction Shipping",
+          "request": {
+            "name": "Bread Classic Get Transaction Shipping",
+            "description": {
+              "content": "Return fulfillment details including carrier and tracking number for the transaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":transactionID",
+                "shipping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c620fe5a-9c8d-4e81-bd3d-2aa9c708cffb",
+              "name": "Shipping returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":transactionID",
+                    "shipping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"carrier\": \"string\",\n  \"trackingNumber\": \"string\",\n  \"shippedAt\": \"1953-03-16T06:59:49.774Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.breadpayments.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6162ce00-144a-4034-a7df-bedfd3801adc",
+    "name": "Bread Classic Merchant API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Legacy \"bread-classic\" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).\n\nContact Support:\n Name: Bread Financial Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
