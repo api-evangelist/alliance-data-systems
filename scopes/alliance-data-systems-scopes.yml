@@ -1,0 +1,30 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/bread-pay-platform-openapi.yml
+schemes:
+- name: oauth2ClientCredentials
+  source: openapi/bread-pay-platform-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.platform.breadpayments.com/auth/sso/token
+  description: OAuth 2.0 Client Credentials flow using API + Secret keys issued from the Bread
+    Merchant Portal.
+scopes:
+- scope: buyers:read
+  description: Read buyer records
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/bread-pay-platform-openapi.yml
+- scope: transactions:read
+  description: Read transactions
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/bread-pay-platform-openapi.yml
+- scope: transactions:write
+  description: Create, authorize, settle, refund transactions
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/bread-pay-platform-openapi.yml

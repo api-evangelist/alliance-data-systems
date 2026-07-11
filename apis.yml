@@ -214,6 +214,8 @@ apis:
       - type: Documentation
         url: https://platform-docs.breadpayments.com/bread-developers/docs
 common:
+  - type: OAuthScopes
+    url: scopes/alliance-data-systems-scopes.yml
   - type: Website
     url: https://www.breadfinancial.com
   - type: FormerWebsite
@@ -258,6 +260,8 @@ common:
     url: vocabulary/alliance-data-systems-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/alliance-data-systems-context.jsonld
+  - url: https://newsroom.breadfinancial.com/rss.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
