@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/bread-classic-merchant-openapi.yml, openapi/bread-pay-platform-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bread Merchant Portal access token (legacy scheme).
+  sources:
+  - openapi/bread-classic-merchant-openapi.yml
+- name: oauth2ClientCredentials
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.platform.breadpayments.com/auth/sso/token
+    scopes: 3
+  description: OAuth 2.0 Client Credentials flow using API + Secret keys issued from the Bread
+    Merchant Portal.
+  sources:
+  - openapi/bread-pay-platform-openapi.yml

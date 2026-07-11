@@ -214,6 +214,10 @@ apis:
       - type: Documentation
         url: https://platform-docs.breadpayments.com/bread-developers/docs
 common:
+  - type: DomainSecurity
+    url: security/alliance-data-systems-domain-security.yml
+  - type: Authentication
+    url: authentication/alliance-data-systems-authentication.yml
   - type: OAuthScopes
     url: scopes/alliance-data-systems-scopes.yml
   - type: Website
