@@ -214,6 +214,8 @@ apis:
       - type: Documentation
         url: https://platform-docs.breadpayments.com/bread-developers/docs
 common:
+  - type: AgenticAccess
+    url: agentic-access/alliance-data-systems-agentic-access.yml
   - type: DomainSecurity
     url: security/alliance-data-systems-domain-security.yml
   - type: Authentication
