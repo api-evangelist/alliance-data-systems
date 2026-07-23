@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: Bread Classic Merchant Buyers Carts API
+  description: Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
+  version: '1.0'
+  contact:
+    name: Bread Financial Developer Support
+    url: https://docs.breadpayments.com/bread-classic/reference
+servers:
+- url: https://api.breadpayments.com
+  description: Production
+- url: https://api-sandbox.breadpayments.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Carts
+  description: Manage Bread shopping carts that initiate the BNPL checkout flow.
+paths:
+  /carts:
+    post:
+      operationId: createCart
+      summary: Bread Classic Create A Cart
+      description: Create a Bread cart that can be referenced by the on-page Bread modal.
+      tags:
+      - Carts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartRequest'
+      responses:
+        '201':
+          description: Cart created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+  /carts/{cartID}:
+    get:
+      operationId: getCart
+      summary: Bread Classic Get A Cart
+      description: Retrieve a Bread cart by its identifier.
+      tags:
+      - Carts
+      parameters:
+      - name: cartID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cart returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+components:
+  schemas:
+    CartItem:
+      type: object
+      properties:
+        name:
+          type: string
+        sku:
+          type: string
+        unitPrice:
+          type: integer
+        quantity:
+          type: integer
+        imageUrl:
+          type: string
+          format: uri
+    Cart:
+      allOf:
+      - $ref: '#/components/schemas/CartRequest'
+      - type: object
+        properties:
+          id:
+            type: string
+          createdAt:
+            type: string
+            format: date-time
+    CartRequest:
+      type: object
+      properties:
+        currency:
+          type: string
+          example: USD
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+        discounts:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+              amount:
+                type: integer
+        shipping:
+          type: object
+          properties:
+            typeId:
+              type: string
+            cost:
+              type: integer
+        tax:
+          type: integer
+        totalPrice:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bread Merchant Portal access token (legacy scheme).
+externalDocs:
+  description: Bread Classic Reference
+  url: https://docs.breadpayments.com/bread-classic/reference

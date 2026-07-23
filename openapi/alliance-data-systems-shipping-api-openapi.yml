@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: Bread Classic Merchant Buyers Shipping API
+  description: Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
+  version: '1.0'
+  contact:
+    name: Bread Financial Developer Support
+    url: https://docs.breadpayments.com/bread-classic/reference
+servers:
+- url: https://api.breadpayments.com
+  description: Production
+- url: https://api-sandbox.breadpayments.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Shipping
+  description: Attach carrier and tracking-number information to a transaction.
+paths:
+  /transactions/{transactionID}/shipping:
+    post:
+      operationId: addTransactionShipping
+      summary: Bread Classic Add Transaction Shipping
+      description: Add fulfillment details including carrier and tracking number to a transaction. Required for settlement on shipped-goods orders.
+      tags:
+      - Shipping
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipping'
+      responses:
+        '200':
+          description: Shipping recorded
+    get:
+      operationId: getTransactionShipping
+      summary: Bread Classic Get Transaction Shipping
+      description: Return fulfillment details including carrier and tracking number for the transaction.
+      tags:
+      - Shipping
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Shipping returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipping'
+components:
+  schemas:
+    Shipping:
+      type: object
+      required:
+      - carrier
+      - trackingNumber
+      properties:
+        carrier:
+          type: string
+        trackingNumber:
+          type: string
+        shippedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bread Merchant Portal access token (legacy scheme).
+externalDocs:
+  description: Bread Classic Reference
+  url: https://docs.breadpayments.com/bread-classic/reference

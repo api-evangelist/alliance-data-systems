@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Bread Classic Merchant Buyers Payment Options API
+  description: Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
+  version: '1.0'
+  contact:
+    name: Bread Financial Developer Support
+    url: https://docs.breadpayments.com/bread-classic/reference
+servers:
+- url: https://api.breadpayments.com
+  description: Production
+- url: https://api-sandbox.breadpayments.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Payment Options
+  description: Retrieve buyer-personalized payment option pricing and terms.
+paths:
+  /payment-options:
+    get:
+      operationId: listPaymentOptions
+      summary: Bread Pay List Payment Options
+      description: List personalized Bread Pay payment options and pricing for the authenticated buyer context.
+      tags:
+      - Payment Options
+      responses:
+        '200':
+          description: Payment options returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentOption'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    Amount:
+      type: object
+      required:
+      - value
+      - currency
+      properties:
+        value:
+          type: integer
+          description: Amount in minor units (e.g. cents).
+        currency:
+          type: string
+          example: USD
+    PaymentOption:
+      type: object
+      properties:
+        id:
+          type: string
+        productType:
+          type: string
+          enum:
+          - SPLIT_PAY
+          - INSTALLMENTS
+          - CARD
+        termMonths:
+          type: integer
+        apr:
+          type: number
+        monthlyPayment:
+          $ref: '#/components/schemas/Amount'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bread Merchant Portal access token (legacy scheme).
+externalDocs:
+  description: Bread Classic Reference
+  url: https://docs.breadpayments.com/bread-classic/reference

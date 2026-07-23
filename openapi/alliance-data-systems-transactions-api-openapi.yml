@@ -1,0 +1,375 @@
+openapi: 3.1.0
+info:
+  title: Bread Classic Merchant Buyers Transactions API
+  description: Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
+  version: '1.0'
+  contact:
+    name: Bread Financial Developer Support
+    url: https://docs.breadpayments.com/bread-classic/reference
+servers:
+- url: https://api.breadpayments.com
+  description: Production
+- url: https://api-sandbox.breadpayments.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Transactions
+  description: Manage completed Bread Pay transactions.
+paths:
+  /transactions/{transactionID}:
+    get:
+      operationId: getTransactionClassic
+      summary: Bread Classic Get A Transaction
+      description: Return a Bread transaction object.
+      tags:
+      - Transactions
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Transaction returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassicTransaction'
+    put:
+      operationId: updateTransactionClassic
+      summary: Bread Classic Update A Transaction
+      description: Update transaction state (e.g. authorize, cancel, settle, refund) via the legacy Merchant API.
+      tags:
+      - Transactions
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassicTransactionUpdate'
+      responses:
+        '200':
+          description: Transaction updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassicTransaction'
+  /transaction:
+    post:
+      operationId: createTransaction
+      summary: Bread Pay Create A Transaction
+      description: Create a new Bread Pay transaction for an authorized buyer.
+      tags:
+      - Transactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+      responses:
+        '201':
+          description: Transaction created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /transaction/{transactionID}:
+    get:
+      operationId: getTransaction
+      summary: Bread Pay Get A Transaction
+      description: Retrieve a single transaction by its unique transaction ID.
+      tags:
+      - Transactions
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Transaction found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /transaction/{transactionID}/authorize:
+    post:
+      operationId: authorizeTransaction
+      summary: Bread Pay Authorize A Transaction
+      description: Authorize a single transaction based on its unique transaction ID, either for the full amount or a partial amount.
+      tags:
+      - Transactions
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: If-Match
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeRequest'
+      responses:
+        '200':
+          description: Transaction authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Request cannot be authorized
+        '412':
+          description: Precondition failed
+        '500':
+          description: Resource conflict
+        '503':
+          description: Service unavailable
+  /transaction/{transactionID}/cancel:
+    post:
+      operationId: cancelTransaction
+      summary: Bread Pay Cancel A Transaction
+      description: Cancel an authorized but un-captured transaction.
+      tags:
+      - Transactions
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Transaction cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '401':
+          description: Unauthorized
+  /transaction/{transactionID}/settle:
+    post:
+      operationId: settleTransaction
+      summary: Bread Pay Settle A Transaction
+      description: Settle (capture) the funds for an authorized transaction.
+      tags:
+      - Transactions
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SettleRequest'
+      responses:
+        '200':
+          description: Transaction settled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '401':
+          description: Unauthorized
+  /transaction/{transactionID}/refund:
+    post:
+      operationId: refundTransaction
+      summary: Bread Pay Refund A Transaction
+      description: Refund a previously settled transaction in full or in part.
+      tags:
+      - Transactions
+      parameters:
+      - name: transactionID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - PENDING
+          - AUTHORIZED
+          - SETTLED
+          - CANCELLED
+          - REFUNDED
+          - EXPIRED
+        amount:
+          $ref: '#/components/schemas/Amount'
+        buyerId:
+          type: string
+          format: uuid
+        merchantOfRecordID:
+          type: string
+          format: uuid
+        createdOn:
+          type: string
+          format: date-time
+        modifiedOn:
+          type: string
+          format: date-time
+    Amount:
+      type: object
+      required:
+      - value
+      - currency
+      properties:
+        value:
+          type: integer
+          description: Amount in minor units (e.g. cents).
+        currency:
+          type: string
+          example: USD
+    RefundRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        reason:
+          type: string
+    TransactionRequest:
+      type: object
+      required:
+      - amount
+      - buyerId
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        buyerId:
+          type: string
+          format: uuid
+        merchantOfRecordID:
+          type: string
+          format: uuid
+        merchantNote:
+          type: string
+          maxLength: 512
+    ClassicTransactionUpdate:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - authorize
+          - cancel
+          - settle
+          - refund
+        amount:
+          type: integer
+    SettleRequest:
+      type: object
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        merchantNote:
+          type: string
+          maxLength: 512
+    ClassicTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - AUTHORIZED
+          - SETTLED
+          - CANCELLED
+          - REFUNDED
+        amount:
+          type: integer
+        currency:
+          type: string
+        merchantId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    AuthorizeRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        isVirtualCard:
+          type: boolean
+          default: false
+        merchantOfRecordID:
+          type: string
+          format: uuid
+        merchantNote:
+          type: string
+          maxLength: 512
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bread Merchant Portal access token (legacy scheme).
+externalDocs:
+  description: Bread Classic Reference
+  url: https://docs.breadpayments.com/bread-classic/reference

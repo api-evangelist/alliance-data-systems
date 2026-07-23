@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Bread Classic Merchant Buyers API
+  description: Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
+  version: '1.0'
+  contact:
+    name: Bread Financial Developer Support
+    url: https://docs.breadpayments.com/bread-classic/reference
+servers:
+- url: https://api.breadpayments.com
+  description: Production
+- url: https://api-sandbox.breadpayments.com
+  description: Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Buyers
+  description: Manage buyer records and look up personalized payment options.
+paths:
+  /buyer/{id}:
+    get:
+      operationId: getBuyer
+      summary: Bread Pay Get A Buyer
+      description: Retrieve a buyer record by Bread buyer identifier.
+      tags:
+      - Buyers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Buyer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Buyer'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Buyer not found
+components:
+  schemas:
+    Buyer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        givenName:
+          type: string
+        familyName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        shippingAddress:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        address1:
+          type: string
+        address2:
+          type: string
+        locality:
+          type: string
+        region:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bread Merchant Portal access token (legacy scheme).
+externalDocs:
+  description: Bread Classic Reference
+  url: https://docs.breadpayments.com/bread-classic/reference
