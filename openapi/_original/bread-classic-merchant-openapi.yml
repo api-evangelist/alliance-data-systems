@@ -1,0 +1,269 @@
+openapi: 3.1.0
+info:
+  title: Bread Classic Merchant API
+  description: >-
+    Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts.
+    The Merchant API helps manage completed transactions and carts (which can
+    also be created directly in the browser via the Bread JavaScript SDK), and
+    the Shipping API exposes carrier and tracking number information on the
+    transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
+  version: '1.0'
+  contact:
+    name: Bread Financial Developer Support
+    url: https://docs.breadpayments.com/bread-classic/reference
+externalDocs:
+  description: Bread Classic Reference
+  url: https://docs.breadpayments.com/bread-classic/reference
+servers:
+  - url: https://api.breadpayments.com
+    description: Production
+  - url: https://api-sandbox.breadpayments.com
+    description: Sandbox
+tags:
+  - name: Carts
+    description: Manage Bread shopping carts that initiate the BNPL checkout flow.
+  - name: Transactions
+    description: Manage completed Bread Pay transactions.
+  - name: Shipping
+    description: Attach carrier and tracking-number information to a transaction.
+security:
+  - bearerAuth: []
+paths:
+  /carts:
+    post:
+      operationId: createCart
+      summary: Bread Classic Create A Cart
+      description: Create a Bread cart that can be referenced by the on-page Bread modal.
+      tags:
+        - Carts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartRequest'
+      responses:
+        '201':
+          description: Cart created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+  /carts/{cartID}:
+    get:
+      operationId: getCart
+      summary: Bread Classic Get A Cart
+      description: Retrieve a Bread cart by its identifier.
+      tags:
+        - Carts
+      parameters:
+        - name: cartID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cart returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+  /transactions/{transactionID}:
+    get:
+      operationId: getTransactionClassic
+      summary: Bread Classic Get A Transaction
+      description: Return a Bread transaction object.
+      tags:
+        - Transactions
+      parameters:
+        - name: transactionID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Transaction returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassicTransaction'
+    put:
+      operationId: updateTransactionClassic
+      summary: Bread Classic Update A Transaction
+      description: Update transaction state (e.g. authorize, cancel, settle, refund) via the legacy Merchant API.
+      tags:
+        - Transactions
+      parameters:
+        - name: transactionID
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassicTransactionUpdate'
+      responses:
+        '200':
+          description: Transaction updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassicTransaction'
+  /transactions/{transactionID}/shipping:
+    post:
+      operationId: addTransactionShipping
+      summary: Bread Classic Add Transaction Shipping
+      description: >-
+        Add fulfillment details including carrier and tracking number to a
+        transaction. Required for settlement on shipped-goods orders.
+      tags:
+        - Shipping
+      parameters:
+        - name: transactionID
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipping'
+      responses:
+        '200':
+          description: Shipping recorded
+    get:
+      operationId: getTransactionShipping
+      summary: Bread Classic Get Transaction Shipping
+      description: Return fulfillment details including carrier and tracking number for the transaction.
+      tags:
+        - Shipping
+      parameters:
+        - name: transactionID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Shipping returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipping'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bread Merchant Portal access token (legacy scheme).
+  schemas:
+    CartRequest:
+      type: object
+      properties:
+        currency:
+          type: string
+          example: USD
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+        discounts:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+              amount:
+                type: integer
+        shipping:
+          type: object
+          properties:
+            typeId:
+              type: string
+            cost:
+              type: integer
+        tax:
+          type: integer
+        totalPrice:
+          type: integer
+    Cart:
+      allOf:
+        - $ref: '#/components/schemas/CartRequest'
+        - type: object
+          properties:
+            id:
+              type: string
+            createdAt:
+              type: string
+              format: date-time
+    CartItem:
+      type: object
+      properties:
+        name:
+          type: string
+        sku:
+          type: string
+        unitPrice:
+          type: integer
+        quantity:
+          type: integer
+        imageUrl:
+          type: string
+          format: uri
+    ClassicTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+          enum:
+            - PENDING
+            - AUTHORIZED
+            - SETTLED
+            - CANCELLED
+            - REFUNDED
+        amount:
+          type: integer
+        currency:
+          type: string
+        merchantId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    ClassicTransactionUpdate:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - authorize
+            - cancel
+            - settle
+            - refund
+        amount:
+          type: integer
+    Shipping:
+      type: object
+      required:
+        - carrier
+        - trackingNumber
+      properties:
+        carrier:
+          type: string
+        trackingNumber:
+          type: string
+        shippedAt:
+          type: string
+          format: date-time
