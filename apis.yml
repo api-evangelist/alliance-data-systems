@@ -172,10 +172,6 @@ apis:
     url: https://api-preview.platform.breadpayments.com/api
   - type: ProductionBaseURL
     url: https://api.platform.breadpayments.com/api
-  - type: Capability
-    url: capabilities/bread-pay-platform-transactions.yaml
-  - type: Capability
-    url: capabilities/bread-pay-platform-buyers.yaml
   - type: Documentation
     url: https://docs.breadpayments.com/bread-classic/reference
   - type: GettingStarted
@@ -186,8 +182,6 @@ apis:
     url: https://docs.breadpayments.com/bread-classic/docs/testing-bread
   - type: ManagingTransactions
     url: https://docs.breadpayments.com/bread-classic/docs/managing-bread-transactions
-  - type: Capability
-    url: capabilities/bread-classic-transactions.yaml
 - aid: alliance-data-systems:alliance-data-systems-carts-api
   name: Alliance Data Systems (Bread Financial Holdings) Carts API
   description: Manage Bread shopping carts that initiate the BNPL checkout flow.
@@ -210,10 +204,6 @@ apis:
     url: https://api-preview.platform.breadpayments.com/api
   - type: ProductionBaseURL
     url: https://api.platform.breadpayments.com/api
-  - type: Capability
-    url: capabilities/bread-pay-platform-transactions.yaml
-  - type: Capability
-    url: capabilities/bread-pay-platform-buyers.yaml
   - type: Documentation
     url: https://docs.breadpayments.com/bread-classic/reference
   - type: GettingStarted
@@ -224,8 +214,6 @@ apis:
     url: https://docs.breadpayments.com/bread-classic/docs/testing-bread
   - type: ManagingTransactions
     url: https://docs.breadpayments.com/bread-classic/docs/managing-bread-transactions
-  - type: Capability
-    url: capabilities/bread-classic-transactions.yaml
 - aid: alliance-data-systems:alliance-data-systems-payment-options-api
   name: Alliance Data Systems (Bread Financial Holdings) Payment Options API
   description: Retrieve buyer-personalized payment option pricing and terms.
@@ -248,10 +236,6 @@ apis:
     url: https://api-preview.platform.breadpayments.com/api
   - type: ProductionBaseURL
     url: https://api.platform.breadpayments.com/api
-  - type: Capability
-    url: capabilities/bread-pay-platform-transactions.yaml
-  - type: Capability
-    url: capabilities/bread-pay-platform-buyers.yaml
   - type: Documentation
     url: https://docs.breadpayments.com/bread-classic/reference
   - type: GettingStarted
@@ -262,8 +246,6 @@ apis:
     url: https://docs.breadpayments.com/bread-classic/docs/testing-bread
   - type: ManagingTransactions
     url: https://docs.breadpayments.com/bread-classic/docs/managing-bread-transactions
-  - type: Capability
-    url: capabilities/bread-classic-transactions.yaml
 - aid: alliance-data-systems:alliance-data-systems-shipping-api
   name: Alliance Data Systems (Bread Financial Holdings) Shipping API
   description: Attach carrier and tracking-number information to a transaction.
@@ -286,10 +268,6 @@ apis:
     url: https://api-preview.platform.breadpayments.com/api
   - type: ProductionBaseURL
     url: https://api.platform.breadpayments.com/api
-  - type: Capability
-    url: capabilities/bread-pay-platform-transactions.yaml
-  - type: Capability
-    url: capabilities/bread-pay-platform-buyers.yaml
   - type: Documentation
     url: https://docs.breadpayments.com/bread-classic/reference
   - type: GettingStarted
@@ -300,8 +278,6 @@ apis:
     url: https://docs.breadpayments.com/bread-classic/docs/testing-bread
   - type: ManagingTransactions
     url: https://docs.breadpayments.com/bread-classic/docs/managing-bread-transactions
-  - type: Capability
-    url: capabilities/bread-classic-transactions.yaml
 - aid: alliance-data-systems:alliance-data-systems-transactions-api
   name: Alliance Data Systems (Bread Financial Holdings) Transactions API
   description: Manage completed Bread Pay transactions.
@@ -324,10 +300,6 @@ apis:
     url: https://api-preview.platform.breadpayments.com/api
   - type: ProductionBaseURL
     url: https://api.platform.breadpayments.com/api
-  - type: Capability
-    url: capabilities/bread-pay-platform-transactions.yaml
-  - type: Capability
-    url: capabilities/bread-pay-platform-buyers.yaml
   - type: Documentation
     url: https://docs.breadpayments.com/bread-classic/reference
   - type: GettingStarted
@@ -338,9 +310,9 @@ apis:
     url: https://docs.breadpayments.com/bread-classic/docs/testing-bread
   - type: ManagingTransactions
     url: https://docs.breadpayments.com/bread-classic/docs/managing-bread-transactions
-  - type: Capability
-    url: capabilities/bread-classic-transactions.yaml
 common:
+  - type: Releases
+    url: https://github.com/bppub/breadfinancial-brand-partners-ios/releases
   - type: AgenticAccess
     url: agentic-access/alliance-data-systems-agentic-access.yml
   - type: DomainSecurity
