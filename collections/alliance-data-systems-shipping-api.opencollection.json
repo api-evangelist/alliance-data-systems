@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bread Classic Merchant Buyers Shipping API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Classic Get Transaction Shipping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.breadpayments.com/transactions/:transactionID/shipping",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return fulfillment details including carrier and tracking number for the transaction."
+        },
+        {
+          "info": {
+            "name": "Bread Classic Add Transaction Shipping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.breadpayments.com/transactions/:transactionID/shipping",
+            "params": [
+              {
+                "name": "transactionID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add fulfillment details including carrier and tracking number to a transaction. Required for settlement on shipped-goods orders."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

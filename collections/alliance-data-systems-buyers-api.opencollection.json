@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bread Classic Merchant Buyers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Buyers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Pay Get A Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.breadpayments.com/buyer/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a buyer record by Bread buyer identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

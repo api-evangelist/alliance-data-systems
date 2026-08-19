@@ -1,0 +1,236 @@
+{
+  "item": [
+    {
+      "id": "9ceba2c5-dc8c-4deb-ab92-a8982ac3a4a0",
+      "name": "Carts",
+      "description": {
+        "content": "Manage Bread shopping carts that initiate the BNPL checkout flow.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "847be411-ca9b-41d1-a2e4-db952ecddc70",
+          "name": "Bread Classic Create A Cart",
+          "request": {
+            "name": "Bread Classic Create A Cart",
+            "description": {
+              "content": "Create a Bread cart that can be referenced by the on-page Bread modal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "carts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"imageUrl\": \"<uri>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"unitPrice\": \"<integer>\",\n      \"quantity\": \"<integer>\",\n      \"imageUrl\": \"<uri>\"\n    }\n  ],\n  \"discounts\": [\n    {\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\"\n    }\n  ],\n  \"shipping\": {\n    \"typeId\": \"<string>\",\n    \"cost\": \"<integer>\"\n  },\n  \"tax\": \"<integer>\",\n  \"totalPrice\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e7323913-fa60-4cef-9431-c6aa5ba4f328",
+              "name": "Cart created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"USD\",\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 294,\n      \"quantity\": 4550,\n      \"imageUrl\": \"https://ovIidgkvqzXmSjXaFezGSdXXgrEISdo.dtljBAupcT1qJSThXM3r6h49x\"\n    },\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 7025,\n      \"quantity\": 7781,\n      \"imageUrl\": \"https://BPEI.mpH27npj26TkC.QVD.WV\"\n    }\n  ],\n  \"discounts\": [\n    {\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"amount\": \"<integer>\"\n    }\n  ],\n  \"shipping\": {\n    \"typeId\": \"<string>\",\n    \"cost\": \"<integer>\"\n  },\n  \"tax\": \"<integer>\",\n  \"totalPrice\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"USD\",\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 9631,\n      \"quantity\": 4315,\n      \"imageUrl\": \"https://qCCmalFiSkyQjrStPQhzkliMPKezHEiqN.psguZXM0dxJJOR3f,EEboopecROwvKmQxTI2J+9Cc6Q\"\n    },\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 3416,\n      \"quantity\": 3780,\n      \"imageUrl\": \"http://ugqRtFVWrTbgqDyDyfJU.blhbC.MCA+k6jro\"\n    }\n  ],\n  \"discounts\": [\n    {\n      \"description\": \"string\",\n      \"amount\": 8818\n    },\n    {\n      \"description\": \"string\",\n      \"amount\": 6164\n    }\n  ],\n  \"shipping\": {\n    \"typeId\": \"string\",\n    \"cost\": 4637\n  },\n  \"tax\": 8764,\n  \"totalPrice\": 7973,\n  \"id\": \"string\",\n  \"createdAt\": \"1948-01-28T07:29:15.928Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0f6e3d4-240e-4e45-b326-45684525df37",
+          "name": "Bread Classic Get A Cart",
+          "request": {
+            "name": "Bread Classic Get A Cart",
+            "description": {
+              "content": "Retrieve a Bread cart by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "carts",
+                ":cartID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cartID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc65897f-9e5a-4b24-b72d-4e66c13499a5",
+              "name": "Cart returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carts",
+                    ":cartID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cartID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"USD\",\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 9631,\n      \"quantity\": 4315,\n      \"imageUrl\": \"https://qCCmalFiSkyQjrStPQhzkliMPKezHEiqN.psguZXM0dxJJOR3f,EEboopecROwvKmQxTI2J+9Cc6Q\"\n    },\n    {\n      \"name\": \"string\",\n      \"sku\": \"string\",\n      \"unitPrice\": 3416,\n      \"quantity\": 3780,\n      \"imageUrl\": \"http://ugqRtFVWrTbgqDyDyfJU.blhbC.MCA+k6jro\"\n    }\n  ],\n  \"discounts\": [\n    {\n      \"description\": \"string\",\n      \"amount\": 8818\n    },\n    {\n      \"description\": \"string\",\n      \"amount\": 6164\n    }\n  ],\n  \"shipping\": {\n    \"typeId\": \"string\",\n    \"cost\": 4637\n  },\n  \"tax\": 8764,\n  \"totalPrice\": 7973,\n  \"id\": \"string\",\n  \"createdAt\": \"1948-01-28T07:29:15.928Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.breadpayments.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a5711cc3-2fdc-497e-b605-f301e5a4ee8e",
+    "name": "Bread Classic Merchant Buyers Carts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Legacy \"bread-classic\" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).\n\nContact Support:\n Name: Bread Financial Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

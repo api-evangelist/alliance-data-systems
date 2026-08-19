@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "9e46fffa-16b4-44d5-98c0-2bfa6f8459b3",
+      "name": "Payment Options",
+      "description": {
+        "content": "Retrieve buyer-personalized payment option pricing and terms.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6eaef11-ecdd-4101-9c69-5872edb77553",
+          "name": "Bread Pay List Payment Options",
+          "request": {
+            "name": "Bread Pay List Payment Options",
+            "description": {
+              "content": "List personalized Bread Pay payment options and pricing for the authenticated buyer context.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment-options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15c27b94-cec8-46b6-9fde-acf94617a6ad",
+              "name": "Payment options returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"productType\": \"INSTALLMENTS\",\n    \"termMonths\": 9185,\n    \"apr\": 9566.876424758313,\n    \"monthlyPayment\": {\n      \"value\": 4623,\n      \"currency\": \"USD\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"productType\": \"SPLIT_PAY\",\n    \"termMonths\": 7225,\n    \"apr\": 3011.4528622817584,\n    \"monthlyPayment\": {\n      \"value\": 7806,\n      \"currency\": \"USD\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b60a197-c394-4d72-ad4b-a28c7293938e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment-options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.breadpayments.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "20db2a8b-cd5b-4d87-9dc6-e2ff87d005be",
+    "name": "Bread Classic Merchant Buyers Payment Options API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Legacy \"bread-classic\" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).\n\nContact Support:\n Name: Bread Financial Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

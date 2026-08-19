@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bread Classic Merchant Buyers Payment Options API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Options",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bread Pay List Payment Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.breadpayments.com/payment-options"
+          },
+          "docs": "List personalized Bread Pay payment options and pricing for the authenticated buyer context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
