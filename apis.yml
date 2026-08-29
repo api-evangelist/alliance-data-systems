@@ -354,6 +354,9 @@ apis:
   - type: ManagingTransactions
     url: https://docs.breadpayments.com/bread-classic/docs/managing-bread-transactions
 common:
+  - type: CapabilityMap
+    url: capabilities/alliance-data-systems-capability-edges.yml
+    name: Alliance Data Systems (Bread Financial Holdings) Business Capability Map
   - type: Releases
     url: https://github.com/bppub/breadfinancial-brand-partners-ios/releases
   - type: AgenticAccess
