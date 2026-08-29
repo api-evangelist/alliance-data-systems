@@ -1,18 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Bread Classic Merchant Buyers Transactions API
-  description: Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
+  title: Alliance Data Systems Transactions API
   version: '1.0'
-  contact:
-    name: Bread Financial Developer Support
-    url: https://docs.breadpayments.com/bread-classic/reference
+  description: 'Operations tagged Transactions across 2 of this provider''s published API definitions: bread-classic-merchant-openapi.yml, bread-pay-platform-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.breadpayments.com
   description: Production
 - url: https://api-sandbox.breadpayments.com
   description: Sandbox
-security:
-- bearerAuth: []
+- url: https://api.platform.breadpayments.com/api
+  description: Production
+- url: https://api-preview.platform.breadpayments.com/api
+  description: Preview / Sandbox
 tags:
 - name: Transactions
   description: Manage completed Bread Pay transactions.
@@ -37,6 +36,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassicTransaction'
+      security:
+      - bearerAuth: []
     put:
       operationId: updateTransactionClassic
       summary: Bread Classic Update A Transaction
@@ -62,6 +63,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassicTransaction'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://api.breadpayments.com
+      description: Production
+    - url: https://api-sandbox.breadpayments.com
+      description: Sandbox
   /transaction:
     post:
       operationId: createTransaction
@@ -86,6 +94,13 @@ paths:
           description: Invalid request
         '401':
           description: Unauthorized
+      security:
+      - oauth2ClientCredentials: []
+    servers:
+    - url: https://api.platform.breadpayments.com/api
+      description: Production
+    - url: https://api-preview.platform.breadpayments.com/api
+      description: Preview / Sandbox
   /transaction/{transactionID}:
     get:
       operationId: getTransaction
@@ -111,6 +126,13 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+      security:
+      - oauth2ClientCredentials: []
+    servers:
+    - url: https://api.platform.breadpayments.com/api
+      description: Production
+    - url: https://api-preview.platform.breadpayments.com/api
+      description: Preview / Sandbox
   /transaction/{transactionID}/authorize:
     post:
       operationId: authorizeTransaction
@@ -155,6 +177,13 @@ paths:
           description: Resource conflict
         '503':
           description: Service unavailable
+      security:
+      - oauth2ClientCredentials: []
+    servers:
+    - url: https://api.platform.breadpayments.com/api
+      description: Production
+    - url: https://api-preview.platform.breadpayments.com/api
+      description: Preview / Sandbox
   /transaction/{transactionID}/cancel:
     post:
       operationId: cancelTransaction
@@ -178,6 +207,13 @@ paths:
                 $ref: '#/components/schemas/Transaction'
         '401':
           description: Unauthorized
+      security:
+      - oauth2ClientCredentials: []
+    servers:
+    - url: https://api.platform.breadpayments.com/api
+      description: Production
+    - url: https://api-preview.platform.breadpayments.com/api
+      description: Preview / Sandbox
   /transaction/{transactionID}/settle:
     post:
       operationId: settleTransaction
@@ -207,6 +243,13 @@ paths:
                 $ref: '#/components/schemas/Transaction'
         '401':
           description: Unauthorized
+      security:
+      - oauth2ClientCredentials: []
+    servers:
+    - url: https://api.platform.breadpayments.com/api
+      description: Production
+    - url: https://api-preview.platform.breadpayments.com/api
+      description: Preview / Sandbox
   /transaction/{transactionID}/refund:
     post:
       operationId: refundTransaction
@@ -236,8 +279,101 @@ paths:
                 $ref: '#/components/schemas/Transaction'
         '401':
           description: Unauthorized
+      security:
+      - oauth2ClientCredentials: []
+    servers:
+    - url: https://api.platform.breadpayments.com/api
+      description: Production
+    - url: https://api-preview.platform.breadpayments.com/api
+      description: Preview / Sandbox
 components:
   schemas:
+    ClassicTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - AUTHORIZED
+          - SETTLED
+          - CANCELLED
+          - REFUNDED
+        amount:
+          type: integer
+        currency:
+          type: string
+        merchantId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    ClassicTransactionUpdate:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - authorize
+          - cancel
+          - settle
+          - refund
+        amount:
+          type: integer
+    SettleRequest:
+      type: object
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        merchantNote:
+          type: string
+          maxLength: 512
+    AuthorizeRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        isVirtualCard:
+          type: boolean
+          default: false
+        merchantOfRecordID:
+          type: string
+          format: uuid
+        merchantNote:
+          type: string
+          maxLength: 512
+    RefundRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        reason:
+          type: string
+    TransactionRequest:
+      type: object
+      required:
+      - amount
+      - buyerId
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        buyerId:
+          type: string
+          format: uuid
+        merchantOfRecordID:
+          type: string
+          format: uuid
+        merchantNote:
+          type: string
+          maxLength: 512
     Transaction:
       type: object
       properties:
@@ -279,97 +415,21 @@ components:
         currency:
           type: string
           example: USD
-    RefundRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        reason:
-          type: string
-    TransactionRequest:
-      type: object
-      required:
-      - amount
-      - buyerId
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        buyerId:
-          type: string
-          format: uuid
-        merchantOfRecordID:
-          type: string
-          format: uuid
-        merchantNote:
-          type: string
-          maxLength: 512
-    ClassicTransactionUpdate:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - authorize
-          - cancel
-          - settle
-          - refund
-        amount:
-          type: integer
-    SettleRequest:
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        merchantNote:
-          type: string
-          maxLength: 512
-    ClassicTransaction:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - AUTHORIZED
-          - SETTLED
-          - CANCELLED
-          - REFUNDED
-        amount:
-          type: integer
-        currency:
-          type: string
-        merchantId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-    AuthorizeRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        isVirtualCard:
-          type: boolean
-          default: false
-        merchantOfRecordID:
-          type: string
-          format: uuid
-        merchantNote:
-          type: string
-          maxLength: 512
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       description: Bread Merchant Portal access token (legacy scheme).
-externalDocs:
-  description: Bread Classic Reference
-  url: https://docs.breadpayments.com/bread-classic/reference
+    oauth2ClientCredentials:
+      type: oauth2
+      description: OAuth 2.0 Client Credentials flow using API + Secret keys issued from the Bread Merchant Portal.
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.platform.breadpayments.com/auth/sso/token
+          scopes:
+            transactions:read: Read transactions
+            transactions:write: Create, authorize, settle, refund transactions
+            buyers:read: Read buyer records
+x-refined-from:
+- bread-classic-merchant-openapi.yml
+- bread-pay-platform-openapi.yml

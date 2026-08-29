@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Bread Classic Merchant Buyers Carts API
+  title: Bread Classic Merchant Carts API
   description: Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
   version: '1.0'
   contact:
@@ -59,30 +59,6 @@ paths:
                 $ref: '#/components/schemas/Cart'
 components:
   schemas:
-    CartItem:
-      type: object
-      properties:
-        name:
-          type: string
-        sku:
-          type: string
-        unitPrice:
-          type: integer
-        quantity:
-          type: integer
-        imageUrl:
-          type: string
-          format: uri
-    Cart:
-      allOf:
-      - $ref: '#/components/schemas/CartRequest'
-      - type: object
-        properties:
-          id:
-            type: string
-          createdAt:
-            type: string
-            format: date-time
     CartRequest:
       type: object
       properties:
@@ -113,6 +89,30 @@ components:
           type: integer
         totalPrice:
           type: integer
+    CartItem:
+      type: object
+      properties:
+        name:
+          type: string
+        sku:
+          type: string
+        unitPrice:
+          type: integer
+        quantity:
+          type: integer
+        imageUrl:
+          type: string
+          format: uri
+    Cart:
+      allOf:
+      - $ref: '#/components/schemas/CartRequest'
+      - type: object
+        properties:
+          id:
+            type: string
+          createdAt:
+            type: string
+            format: date-time
   securitySchemes:
     bearerAuth:
       type: http
