@@ -416,3 +416,6 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-parent: bread
+x-relationship: rebrand-predecessor
+x-acquired: 2022
