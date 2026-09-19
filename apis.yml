@@ -53,6 +53,9 @@ description: 'Alliance Data Systems Corporation (ADS) was a Plano/Columbus-based
   Miva, Volusion, and Turbify. The corporate/holding side (private-label and co-brand cards issued through
   Comenity Bank and Comenity Capital Bank, plus high-yield savings, CDs, IRAs, and personal loans) is
   delivered through B2B partner integrations rather than a public developer portal.'
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-17
 tags:
 - Financial-Services
 - Fintech
