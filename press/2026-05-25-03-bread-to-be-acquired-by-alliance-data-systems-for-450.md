@@ -1,7 +1,9 @@
 ---
 title: Bread to be Acquired by Alliance Data Systems for $450 ...
 url: https://www.stblaw.com/about-us/news/view/2020/10/29/bread-to-be-acquired-by-alliance-data-systems-for-$450-million
-date: '2026-05-25'
+published: '2020-10-29'
+date_basis: url-derived
+harvested: '2026-05-25'
 query: '"Alliance Data Systems" press release artificial intelligence'
 position: 3
 source: serpapi-google

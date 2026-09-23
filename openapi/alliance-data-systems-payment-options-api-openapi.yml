@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Bread Pay Platform Payment Options API
-  description: BreadPay Platform API for managing buyers, merchant accounts, payment options, and the full transaction lifecycle (create, authorize, cancel, capture, refund). Authentication uses OAuth 2.0 Client Credentials Flow with credentials issued from the Bread Merchant Portal. Hosted by Bread Financial Holdings (NYSE&#58; BFH) under the Bread Pay brand. The rebranded successor to Alliance Data Systems' BNPL surface.
+  description: 'BreadPay Platform API for managing buyers, merchant accounts, payment options, and the full transaction lifecycle (create, authorize, cancel, capture, refund). Authentication uses OAuth 2.0 Client Credentials Flow with credentials issued from the Bread Merchant Portal. Hosted by Bread Financial Holdings (NYSE: BFH) under the Bread Pay brand. The rebranded successor to Alliance Data Systems'' BNPL surface.'
   version: '1.0'
   contact:
     name: Bread Financial Developer Support
@@ -38,18 +38,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    Amount:
-      type: object
-      required:
-      - value
-      - currency
-      properties:
-        value:
-          type: integer
-          description: Amount in minor units (e.g. cents).
-        currency:
-          type: string
-          example: USD
     PaymentOption:
       type: object
       properties:
@@ -67,6 +55,18 @@ components:
           type: number
         monthlyPayment:
           $ref: '#/components/schemas/Amount'
+    Amount:
+      type: object
+      required:
+      - value
+      - currency
+      properties:
+        value:
+          type: integer
+          description: Amount in minor units (e.g. cents).
+        currency:
+          type: string
+          example: USD
   securitySchemes:
     oauth2ClientCredentials:
       type: oauth2

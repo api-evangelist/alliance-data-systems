@@ -18,7 +18,8 @@
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "bread-classic-merchant-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "bread-pay-platform-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "tag 'Transactions' spans 2 source specs (bread-classic-merchant-openapi.yml, bread-pay-platform-openapi.yml): per-path servers applied"
+    "tag 'Transactions' spans 2 source specs (bread-classic-merchant-openapi.yml, bread-pay-platform-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "alliance-data-systems-buyers-api-openapi.yml: previously refined output, superseded by openapi/_original/",

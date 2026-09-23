@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Bread Classic Merchant Shipping API
-  description: Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE&#58; BFH).
+  description: 'Legacy "bread-classic" REST API for managing Bread Pay BNPL checkouts. The Merchant API helps manage completed transactions and carts (which can also be created directly in the browser via the Bread JavaScript SDK), and the Shipping API exposes carrier and tracking number information on the transaction. Hosted by Bread Financial Holdings (NYSE: BFH).'
   version: '1.0'
   contact:
     name: Bread Financial Developer Support

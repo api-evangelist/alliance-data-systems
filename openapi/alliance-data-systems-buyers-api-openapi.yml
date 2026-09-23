@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Bread Pay Platform Buyers API
-  description: BreadPay Platform API for managing buyers, merchant accounts, payment options, and the full transaction lifecycle (create, authorize, cancel, capture, refund). Authentication uses OAuth 2.0 Client Credentials Flow with credentials issued from the Bread Merchant Portal. Hosted by Bread Financial Holdings (NYSE&#58; BFH) under the Bread Pay brand. The rebranded successor to Alliance Data Systems' BNPL surface.
+  description: 'BreadPay Platform API for managing buyers, merchant accounts, payment options, and the full transaction lifecycle (create, authorize, cancel, capture, refund). Authentication uses OAuth 2.0 Client Credentials Flow with credentials issued from the Bread Merchant Portal. Hosted by Bread Financial Holdings (NYSE: BFH) under the Bread Pay brand. The rebranded successor to Alliance Data Systems'' BNPL surface.'
   version: '1.0'
   contact:
     name: Bread Financial Developer Support
@@ -45,6 +45,21 @@ paths:
           description: Buyer not found
 components:
   schemas:
+    Address:
+      type: object
+      properties:
+        address1:
+          type: string
+        address2:
+          type: string
+        locality:
+          type: string
+        region:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
     Buyer:
       type: object
       properties:
@@ -64,21 +79,6 @@ components:
           $ref: '#/components/schemas/Address'
         shippingAddress:
           $ref: '#/components/schemas/Address'
-    Address:
-      type: object
-      properties:
-        address1:
-          type: string
-        address2:
-          type: string
-        locality:
-          type: string
-        region:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
   securitySchemes:
     oauth2ClientCredentials:
       type: oauth2

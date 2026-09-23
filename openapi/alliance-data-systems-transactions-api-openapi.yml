@@ -288,6 +288,18 @@ paths:
       description: Preview / Sandbox
 components:
   schemas:
+    ClassicTransactionUpdate:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - authorize
+          - cancel
+          - settle
+          - refund
+        amount:
+          type: integer
     ClassicTransaction:
       type: object
       properties:
@@ -312,18 +324,44 @@ components:
         createdAt:
           type: string
           format: date-time
-    ClassicTransactionUpdate:
+    Amount:
       type: object
+      required:
+      - value
+      - currency
       properties:
-        type:
-          type: string
-          enum:
-          - authorize
-          - cancel
-          - settle
-          - refund
-        amount:
+        value:
           type: integer
+          description: Amount in minor units (e.g. cents).
+        currency:
+          type: string
+          example: USD
+    TransactionRequest:
+      type: object
+      required:
+      - amount
+      - buyerId
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        buyerId:
+          type: string
+          format: uuid
+        merchantOfRecordID:
+          type: string
+          format: uuid
+        merchantNote:
+          type: string
+          maxLength: 512
+    RefundRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        reason:
+          type: string
     SettleRequest:
       type: object
       properties:
@@ -342,32 +380,6 @@ components:
         isVirtualCard:
           type: boolean
           default: false
-        merchantOfRecordID:
-          type: string
-          format: uuid
-        merchantNote:
-          type: string
-          maxLength: 512
-    RefundRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        reason:
-          type: string
-    TransactionRequest:
-      type: object
-      required:
-      - amount
-      - buyerId
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        buyerId:
-          type: string
-          format: uuid
         merchantOfRecordID:
           type: string
           format: uuid
@@ -403,18 +415,6 @@ components:
         modifiedOn:
           type: string
           format: date-time
-    Amount:
-      type: object
-      required:
-      - value
-      - currency
-      properties:
-        value:
-          type: integer
-          description: Amount in minor units (e.g. cents).
-        currency:
-          type: string
-          example: USD
   securitySchemes:
     bearerAuth:
       type: http
