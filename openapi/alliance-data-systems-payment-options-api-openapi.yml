@@ -38,6 +38,18 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    Amount:
+      type: object
+      required:
+      - value
+      - currency
+      properties:
+        value:
+          type: integer
+          description: Amount in minor units (e.g. cents).
+        currency:
+          type: string
+          example: USD
     PaymentOption:
       type: object
       properties:
@@ -55,18 +67,6 @@ components:
           type: number
         monthlyPayment:
           $ref: '#/components/schemas/Amount'
-    Amount:
-      type: object
-      required:
-      - value
-      - currency
-      properties:
-        value:
-          type: integer
-          description: Amount in minor units (e.g. cents).
-        currency:
-          type: string
-          example: USD
   securitySchemes:
     oauth2ClientCredentials:
       type: oauth2

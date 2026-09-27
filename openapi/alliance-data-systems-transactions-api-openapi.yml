@@ -288,18 +288,6 @@ paths:
       description: Preview / Sandbox
 components:
   schemas:
-    ClassicTransactionUpdate:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - authorize
-          - cancel
-          - settle
-          - refund
-        amount:
-          type: integer
     ClassicTransaction:
       type: object
       properties:
@@ -324,18 +312,27 @@ components:
         createdAt:
           type: string
           format: date-time
-    Amount:
+    ClassicTransactionUpdate:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - authorize
+          - cancel
+          - settle
+          - refund
+        amount:
+          type: integer
+    RefundRequest:
       type: object
       required:
-      - value
-      - currency
+      - amount
       properties:
-        value:
-          type: integer
-          description: Amount in minor units (e.g. cents).
-        currency:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        reason:
           type: string
-          example: USD
     TransactionRequest:
       type: object
       required:
@@ -347,39 +344,6 @@ components:
         buyerId:
           type: string
           format: uuid
-        merchantOfRecordID:
-          type: string
-          format: uuid
-        merchantNote:
-          type: string
-          maxLength: 512
-    RefundRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        reason:
-          type: string
-    SettleRequest:
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        merchantNote:
-          type: string
-          maxLength: 512
-    AuthorizeRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        isVirtualCard:
-          type: boolean
-          default: false
         merchantOfRecordID:
           type: string
           format: uuid
@@ -415,6 +379,42 @@ components:
         modifiedOn:
           type: string
           format: date-time
+    AuthorizeRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        isVirtualCard:
+          type: boolean
+          default: false
+        merchantOfRecordID:
+          type: string
+          format: uuid
+        merchantNote:
+          type: string
+          maxLength: 512
+    Amount:
+      type: object
+      required:
+      - value
+      - currency
+      properties:
+        value:
+          type: integer
+          description: Amount in minor units (e.g. cents).
+        currency:
+          type: string
+          example: USD
+    SettleRequest:
+      type: object
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        merchantNote:
+          type: string
+          maxLength: 512
   securitySchemes:
     bearerAuth:
       type: http

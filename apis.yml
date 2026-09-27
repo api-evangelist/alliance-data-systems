@@ -2,17 +2,21 @@ aid: alliance-data-systems
 name: Alliance Data Systems (Bread Financial Holdings)
 url: https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/refs/heads/main/apis.yml
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - bppub/breadfinancial-brand-partners-android
+    - bppub/breadfinancial-brand-partners-ios
   open_source: unknown
   commercial: true
-  callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  callable_host: true
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: paid
@@ -57,7 +61,7 @@ x-docs-platform: readme
 x-docs-platform-confidence: high
 x-docs-platform-checked: 2026-09-17
 tags:
-- Financial-Services
+- Financial Services
 - Fintech
 - Buy Now Pay Later
 - Bread Pay
@@ -97,6 +101,7 @@ tags_raw:
 - NYSE BFH
 - Comenity Bank
 - Rebrand
+- Financial-Services
 apis:
 - name: Bread JavaScript SDK
   description: Browser-side JavaScript SDK that exposes the BreadPayments object for rendering the Bread

@@ -45,21 +45,6 @@ paths:
           description: Buyer not found
 components:
   schemas:
-    Address:
-      type: object
-      properties:
-        address1:
-          type: string
-        address2:
-          type: string
-        locality:
-          type: string
-        region:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
     Buyer:
       type: object
       properties:
@@ -79,6 +64,21 @@ components:
           $ref: '#/components/schemas/Address'
         shippingAddress:
           $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        address1:
+          type: string
+        address2:
+          type: string
+        locality:
+          type: string
+        region:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
   securitySchemes:
     oauth2ClientCredentials:
       type: oauth2
