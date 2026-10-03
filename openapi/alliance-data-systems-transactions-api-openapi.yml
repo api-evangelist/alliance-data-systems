@@ -288,6 +288,18 @@ paths:
       description: Preview / Sandbox
 components:
   schemas:
+    ClassicTransactionUpdate:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - authorize
+          - cancel
+          - settle
+          - refund
+        amount:
+          type: integer
     ClassicTransaction:
       type: object
       properties:
@@ -312,27 +324,14 @@ components:
         createdAt:
           type: string
           format: date-time
-    ClassicTransactionUpdate:
+    SettleRequest:
       type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - authorize
-          - cancel
-          - settle
-          - refund
-        amount:
-          type: integer
-    RefundRequest:
-      type: object
-      required:
-      - amount
       properties:
         amount:
           $ref: '#/components/schemas/Amount'
-        reason:
+        merchantNote:
           type: string
+          maxLength: 512
     TransactionRequest:
       type: object
       required:
@@ -350,6 +349,27 @@ components:
         merchantNote:
           type: string
           maxLength: 512
+    Amount:
+      type: object
+      required:
+      - value
+      - currency
+      properties:
+        value:
+          type: integer
+          description: Amount in minor units (e.g. cents).
+        currency:
+          type: string
+          example: USD
+    RefundRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        reason:
+          type: string
     Transaction:
       type: object
       properties:
@@ -392,26 +412,6 @@ components:
         merchantOfRecordID:
           type: string
           format: uuid
-        merchantNote:
-          type: string
-          maxLength: 512
-    Amount:
-      type: object
-      required:
-      - value
-      - currency
-      properties:
-        value:
-          type: integer
-          description: Amount in minor units (e.g. cents).
-        currency:
-          type: string
-          example: USD
-    SettleRequest:
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
         merchantNote:
           type: string
           maxLength: 512
