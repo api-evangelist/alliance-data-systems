@@ -324,31 +324,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    SettleRequest:
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        merchantNote:
-          type: string
-          maxLength: 512
-    TransactionRequest:
-      type: object
-      required:
-      - amount
-      - buyerId
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        buyerId:
-          type: string
-          format: uuid
-        merchantOfRecordID:
-          type: string
-          format: uuid
-        merchantNote:
-          type: string
-          maxLength: 512
     Amount:
       type: object
       required:
@@ -361,15 +336,6 @@ components:
         currency:
           type: string
           example: USD
-    RefundRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        reason:
-          type: string
     Transaction:
       type: object
       properties:
@@ -399,6 +365,23 @@ components:
         modifiedOn:
           type: string
           format: date-time
+    RefundRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        reason:
+          type: string
+    SettleRequest:
+      type: object
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        merchantNote:
+          type: string
+          maxLength: 512
     AuthorizeRequest:
       type: object
       required:
@@ -409,6 +392,23 @@ components:
         isVirtualCard:
           type: boolean
           default: false
+        merchantOfRecordID:
+          type: string
+          format: uuid
+        merchantNote:
+          type: string
+          maxLength: 512
+    TransactionRequest:
+      type: object
+      required:
+      - amount
+      - buyerId
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        buyerId:
+          type: string
+          format: uuid
         merchantOfRecordID:
           type: string
           format: uuid

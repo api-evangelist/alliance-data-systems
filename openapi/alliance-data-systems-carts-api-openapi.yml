@@ -59,30 +59,6 @@ paths:
                 $ref: '#/components/schemas/Cart'
 components:
   schemas:
-    CartItem:
-      type: object
-      properties:
-        name:
-          type: string
-        sku:
-          type: string
-        unitPrice:
-          type: integer
-        quantity:
-          type: integer
-        imageUrl:
-          type: string
-          format: uri
-    Cart:
-      allOf:
-      - $ref: '#/components/schemas/CartRequest'
-      - type: object
-        properties:
-          id:
-            type: string
-          createdAt:
-            type: string
-            format: date-time
     CartRequest:
       type: object
       properties:
@@ -113,6 +89,30 @@ components:
           type: integer
         totalPrice:
           type: integer
+    CartItem:
+      type: object
+      properties:
+        name:
+          type: string
+        sku:
+          type: string
+        unitPrice:
+          type: integer
+        quantity:
+          type: integer
+        imageUrl:
+          type: string
+          format: uri
+    Cart:
+      allOf:
+      - $ref: '#/components/schemas/CartRequest'
+      - type: object
+        properties:
+          id:
+            type: string
+          createdAt:
+            type: string
+            format: date-time
   securitySchemes:
     bearerAuth:
       type: http
