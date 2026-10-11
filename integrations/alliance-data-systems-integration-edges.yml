@@ -1,0 +1,18 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/alliance-data-systems/integrations
+- https://zapier.com/apps/alliance-data-systems-bread-financial-holdings/integrations
+- https://n8n.io/integrations/alliance-data-systems/
+- https://composio.dev/toolkits/alliance-data-systems
+- https://monid.ai/tools/alliance-data-systems
+checked:
+- https://composio.dev/toolkits/alliance-data-systems
+- https://monid.ai/tools/alliance-data-systems
+- https://n8n.io/integrations/alliance-data-systems/
+- https://zapier.com/apps/alliance-data-systems-bread-financial-holdings/integrations
+- https://zapier.com/apps/alliance-data-systems/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
