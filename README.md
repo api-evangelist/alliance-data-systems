@@ -1,4 +1,4 @@
-# Alliance Data Systems (Bread Financial Holdings) (alliance-data-systems)
+# Alliance Data Systems (Bread Financial Holdings)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,225 +64,191 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Alliance Data Systems Corporation (ADS) was a Plano/Columbus-based financial and marketing services holding company built in 1996 from the merger of J.C. Penney's credit card processing unit and The Limited's World Financial Network National Bank, taken public on the NYSE in 2001. The company historically operated three segments — Card Services (private label and co-brand retail credit cards), Epsilon (data-driven marketing and CRM), and LoyaltyOne (the AIR MILES Reward Program in Canada and BrandLoyalty in the Netherlands). In July 2019 ADS sold Epsilon to Publicis Groupe for $4.4 billion. In December 2020 ADS acquired Bread, a New York-based BNPL platform, for $450 million. In November 2021 ADS spun off LoyaltyOne as Loyalty Ventures Inc. (LTRN). On March 23, 2022 the remaining card-and-payments business rebranded as Bread Financial Holdings, Inc., with the common stock starting to trade on NYSE under the new ticker BFH on April 4, 2022. Today Bread Financial is a tech-forward financial services company headquartered in Columbus, Ohio (Wikipedia 2024 figures&#58; $3.84B revenue, ~6,000 employees, $22.9B total assets, 135+ managed card programs across partners including Victoria's Secret, Wayfair, Williams-Sonoma, Academy Sports, HP, PlayStation, and the Crypto.com Visa Card). The developer surface lives under the Bread Pay BNPL brand at developer-facing properties docs.breadpayments.com (legacy "bread-classic" Merchant API) and platform-docs.breadpayments.com (next-generation "BreadPay Platform" APIs, OAuth 2.0 Client Credentials, hosted on https://api.platform.breadpayments.com/api), plus a JavaScript Bread SDK (preview + production CDN), iOS/Android mobile SDKs published as the Bread Financial Brand Partners SDKs on github.com/bppub, and platform integrations for Shopify, Magento 2, WooCommerce, BigCommerce, Salesforce Commerce Cloud, Miva, Volusion, and Turbify. The corporate/holding side (private-label and co-brand cards issued through Comenity Bank and Comenity Capital Bank, plus high-yield savings, CDs, IRAs, and personal loans) is delivered through B2B partner integrations rather than a public developer portal.
+Alliance Data Systems Corporation (ADS) was a Plano/Columbus-based financial and marketing services holding company built in 1996 from the merger of J.C. Penney's credit card processing unit and The Limited's World Financial Network National Bank, taken public on the NYSE in 2001. The company historically operated three segments — Card Services (private label and co-brand retail credit cards), Epsilon (data-driven marketing and CRM), and LoyaltyOne (the AIR MILES Reward Program in Canada and BrandLoyalty in the Netherlands). In July 2019 ADS sold Epsilon to Publicis Groupe for $4.4 billion. In December 2020 ADS acquired Bread, a New York-based BNPL platform, for $450 million. In November 2021 ADS spun off LoyaltyOne as Loyalty Ventures Inc. (LTRN). On March 23, 2022 the remaining card-and-payments business rebranded as Bread Financial Holdings, Inc., with the common stock starting to trade on NYSE under the new ticker BFH on April 4, 2022. Today Bread Financial is a tech-forward financial services company headquartered in Columbus, Ohio (Wikipedia 2024 figures: $3.84B revenue, ~6,000 employees, $22.9B total assets, 135+ managed card programs across partners including Victoria's Secret, Wayfair, Williams-Sonoma, Academy Sports, HP, PlayStation, and the Crypto.com Visa Card). The developer surface lives under the Bread Pay BNPL brand at developer-facing properties docs.breadpayments.com (legacy "bread-classic" Merchant API) and platform-docs.breadpayments.com (next-generation "BreadPay Platform" APIs, OAuth 2.0 Client Credentials, hosted on https://api.platform.breadpayments.com/api), plus a JavaScript Bread SDK (preview + production CDN), iOS/Android mobile SDKs published as the Bread Financial Brand Partners SDKs on github.com/bppub, and platform integrations for Shopify, Magento 2, WooCommerce, BigCommerce, Salesforce Commerce Cloud, Miva, Volusion, and Turbify. The corporate/holding side (private-label and co-brand cards issued through Comenity Bank and Comenity Capital Bank, plus high-yield savings, CDs, IRAs, and personal loans) is delivered through B2B partner integrations rather than a public developer portal.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/alliance-data-systems/refs/heads/main/apis.yml)
+**Areas:** Financial Services · Fintech · Buy Now Pay Later · Bread Pay · Private Label Credit · Co Brand Credit Cards · Loyalty Programs · Marketing · Data Driven Marketing · Payments · Lending · Savings
 
-## Tags
+## Alliance Data Systems (Bread Financial Holdings) on APIs.io
 
-- Financial Services
-- Fintech
-- Buy Now Pay Later
-- BNPL
-- Bread Pay
-- Private Label Credit
-- Co Brand Credit Cards
-- Loyalty Programs
-- Marketing
-- Data Driven Marketing
-- Payments
-- Lending
-- Savings
-- Personal Loans
-- Consumer Banking
-- Retail Finance
-- Fortune 500
-- NYSE BFH
-- Comenity Bank
-- Rebrand
+Everything profiled for Alliance Data Systems (Bread Financial Holdings) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/alliance-data-systems/](https://apis.io/providers/alliance-data-systems/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (9)
 
-- **Created:** 2026-04-19
-- **Modified:** 2026-05-23
+- [Bread JavaScript SDK](https://apis.io/apis/alliance-data-systems/bread-javascript-sdk/) — Browser-side JavaScript SDK that exposes the BreadPayments object for rendering the Bread modal, embedded placements, prequalification, and cart/checkout…
+- [Bread Financial Brand Partners iOS SDK](https://apis.io/apis/alliance-data-systems/bread-financial-brand-partners-ios-sdk/) — Official Bread Financial mobile SDK for iOS published as breadfinancial-brand-partners-ios on the bppub GitHub organization. Provides batch prescreen,…
+- [Bread Financial Brand Partners Android SDK](https://apis.io/apis/alliance-data-systems/bread-financial-brand-partners-android-sdk/) — Official Bread Financial mobile SDK for Android (Kotlin) published as breadfinancial-brand-partners-android on the bppub GitHub organization. Provides batch…
+- [Bread Webhooks](https://apis.io/apis/alliance-data-systems/bread-webhooks/) — Outbound webhook system for the BreadPay Platform that notifies merchant systems of transaction lifecycle events. Documented under the BreadPay developer…
+- [Alliance Data Systems (Bread Financial Holdings) Buyers API](https://apis.io/apis/alliance-data-systems/alliance-data-systems-buyers-api/) — Manage buyer records and look up personalized payment options.
+- [Alliance Data Systems (Bread Financial Holdings) Carts API](https://apis.io/apis/alliance-data-systems/alliance-data-systems-carts-api/) — Manage Bread shopping carts that initiate the BNPL checkout flow.
+- [Alliance Data Systems (Bread Financial Holdings) Payment Options API](https://apis.io/apis/alliance-data-systems/alliance-data-systems-payment-options-api/) — Retrieve buyer-personalized payment option pricing and terms.
+- [Alliance Data Systems (Bread Financial Holdings) Shipping API](https://apis.io/apis/alliance-data-systems/alliance-data-systems-shipping-api/) — Attach carrier and tracking-number information to a transaction.
+- [Alliance Data Systems (Bread Financial Holdings) Transactions API](https://apis.io/apis/alliance-data-systems/alliance-data-systems-transactions-api/) — Manage completed Bread Pay transactions.
 
-## APIs
+### Published properties
 
-### Bread Pay Platform API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Next-generation BreadPay Platform REST API for managing buyers, merchant accounts, payment options, transaction lifecycle (authorize, cancel, capture, refund), and payment-product servicing. Hosted at api.platform.breadpayments.com with a preview environment at api-preview.platform.breadpayments.com. Authentication is OAuth 2.0 Client Credentials Flow with credentials issued from the Bread Merchant Portal.
+#### Agentic access (1)
 
-- **Human URL:** [https://platform-docs.breadpayments.com/bread-developers](https://platform-docs.breadpayments.com/bread-developers)
-- **Base URL:** `https://api.platform.breadpayments.com/api`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Alliance Data Systems Agentic Access](https://apis.io/agentic-access/alliance-data-systems/alliance-data-systems-agentic-access/)
 
-- Buy Now Pay Later
-- BNPL
-- Payments
-- Transactions
-- Buyers
-- Merchants
+#### JSON Schema (9)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://platform-docs.breadpayments.com/bread-developers)
-- [Concepts](https://platform-docs.breadpayments.com/bread-developers/docs)
-- [Authentication](https://platform-docs.breadpayments.com/bread-developers/docs/api-access)
-- [API Reference](https://platform-docs.breadpayments.com/bread-developers/reference)
-- [OpenAPI](openapi/bread-pay-platform-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bread-pay-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-pay-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Sandbox Base U R L](https://api-preview.platform.breadpayments.com/api)
-- [Production Base U R L](https://api.platform.breadpayments.com/api)
-- [Capability](capabilities/bread-pay-platform-transactions.yaml)
-- [Capability](capabilities/bread-pay-platform-buyers.yaml)
+- [BreadClassicCart](https://apis.io/schemas/alliance-data-systems/bread-classic-cart/)
+- [BreadClassicCartItem](https://apis.io/schemas/alliance-data-systems/bread-classic-cart-item/)
+- [BreadClassicShipping](https://apis.io/schemas/alliance-data-systems/bread-classic-shipping/)
+- [BreadClassicTransaction](https://apis.io/schemas/alliance-data-systems/bread-classic-transaction/)
+- [BreadPayPlatformAddress](https://apis.io/schemas/alliance-data-systems/bread-pay-platform-address/)
+- [BreadPayPlatformAmount](https://apis.io/schemas/alliance-data-systems/bread-pay-platform-amount/)
+- [BreadPayPlatformBuyer](https://apis.io/schemas/alliance-data-systems/bread-pay-platform-buyer/)
+- [BreadPayPlatformPaymentOption](https://apis.io/schemas/alliance-data-systems/bread-pay-platform-payment-option/)
+- [BreadPayPlatformTransaction](https://apis.io/schemas/alliance-data-systems/bread-pay-platform-transaction/)
 
-### Bread Classic Merchant API
+#### JSON Structure (4)
 
-Legacy "bread-classic" REST API for managing Bread checkout transactions, carts, shipping (carrier + tracking) and capture/refund/cancel actions from the original Bread BNPL product, still documented at docs.breadpayments.com for merchants on the prior integration. The Merchant API helps manage completed transactions and carts, which can also be created directly in the browser via the Bread JavaScript SDK.
+Data models expressed in JSON Structure.
 
-- **Human URL:** [https://docs.breadpayments.com/bread-classic/reference/getting-started-with-your-api](https://docs.breadpayments.com/bread-classic/reference/getting-started-with-your-api)
-- **Base URL:** `https://api.breadpayments.com`
+- [Bread Classic Cart Structure](https://apis.io/json-structure/alliance-data-systems/bread-classic-cart-structure/)
+- [Bread Pay Platform Address Structure](https://apis.io/json-structure/alliance-data-systems/bread-pay-platform-address-structure/)
+- [Bread Pay Platform Buyer Structure](https://apis.io/json-structure/alliance-data-systems/bread-pay-platform-buyer-structure/)
+- [Bread Pay Platform Transaction Structure](https://apis.io/json-structure/alliance-data-systems/bread-pay-platform-transaction-structure/)
 
-#### Tags
+#### JSON-LD (1)
 
-- Buy Now Pay Later
-- BNPL
-- Merchant
-- Transactions
-- Carts
-- Shipping
-- Legacy
+Linked-data contexts for the provider's vocabulary.
 
-#### Properties
+- [Alliance Data Systems Context](https://apis.io/jsonld/alliance-data-systems/alliance-data-systems-context/)
 
-- [Documentation](https://docs.breadpayments.com/bread-classic/reference)
-- [Getting Started](https://docs.breadpayments.com/bread-classic/reference/getting-started-with-your-api)
-- [Checkout](https://docs.breadpayments.com/bread-classic/docs/bread-checkout)
-- [Testing](https://docs.breadpayments.com/bread-classic/docs/testing-bread)
-- [Managing Transactions](https://docs.breadpayments.com/bread-classic/docs/managing-bread-transactions)
-- [OpenAPI](openapi/bread-classic-merchant-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bread-classic-merchant.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-classic-merchant.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Capability](capabilities/bread-classic-transactions.yaml)
+#### Vocabulary (1)
 
-### Bread JavaScript SDK
+The provider's domain terms, defined.
 
-Browser-side JavaScript SDK that exposes the BreadPayments object for rendering the Bread modal, embedded placements, prequalification, and cart/checkout flows on merchant sites. Loaded from Bread CDNs in preview and production environments and initialized with a merchant integrationKey plus buyer object.
+- [Alliance Data Systems Vocabulary](https://apis.io/vocabularies/alliance-data-systems/alliance-data-systems-vocabulary/)
 
-- **Human URL:** [https://platform-docs.breadpayments.com/bread-onboarding/docs/bread-sdk-installation](https://platform-docs.breadpayments.com/bread-onboarding/docs/bread-sdk-installation)
-- **Base URL:** `https://connect.breadpayments.com`
+#### Examples (7)
 
-#### Tags
+Example requests and responses.
 
-- SDK
-- JavaScript
-- Web
-- Checkout
-- Placements
-- Prequalification
+- [Bread Classic Add Shipping Example](https://apis.io/examples/alliance-data-systems/bread-classic-add-shipping-example/)
+- [Bread Classic Create Cart Example](https://apis.io/examples/alliance-data-systems/bread-classic-create-cart-example/)
+- [Bread Pay Platform Authorize Transaction Example](https://apis.io/examples/alliance-data-systems/bread-pay-platform-authorize-transaction-example/)
+- [Bread Pay Platform Create Transaction Example](https://apis.io/examples/alliance-data-systems/bread-pay-platform-create-transaction-example/)
+- [Bread Pay Platform Get Buyer Example](https://apis.io/examples/alliance-data-systems/bread-pay-platform-get-buyer-example/)
+- [Bread Pay Platform Get Transaction Example](https://apis.io/examples/alliance-data-systems/bread-pay-platform-get-transaction-example/)
+- [Bread Pay Platform Refund Transaction Example](https://apis.io/examples/alliance-data-systems/bread-pay-platform-refund-transaction-example/)
 
-#### Properties
+#### Collections (7)
 
-- [Documentation](https://platform-docs.breadpayments.com/bread-onboarding/docs/bread-sdk-installation)
-- [Preview C D N](https://connect-preview.breadpayments.com/sdk.js)
-- [Production C D N](https://connect.breadpayments.com/sdk.js)
-- [Unified S D K Overview](https://platform-docs.breadpayments.com/bread-onboarding/docs/unified-sdk-overview)
-- [Postman Collection](collections/bread-classic-merchant.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-classic-merchant.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/bread-pay-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-pay-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### Bread Financial Brand Partners iOS SDK
+- [Bread Classic Merchant Buyers API](https://apis.io/collections/alliance-data-systems/open-alliance-data-systems-buyers-api/)
+- [Bread Classic Merchant Buyers Carts API](https://apis.io/collections/alliance-data-systems/open-alliance-data-systems-carts-api/)
+- [Bread Classic Merchant Buyers Payment Options API](https://apis.io/collections/alliance-data-systems/open-alliance-data-systems-payment-options-api/)
+- [Bread Classic Merchant Buyers Shipping API](https://apis.io/collections/alliance-data-systems/open-alliance-data-systems-shipping-api/)
+- [Bread Classic Merchant Buyers Transactions API](https://apis.io/collections/alliance-data-systems/open-alliance-data-systems-transactions-api/)
+- [Bread Classic Merchant API](https://apis.io/collections/alliance-data-systems/open-bread-classic-merchant/)
+- [Bread Pay Platform API](https://apis.io/collections/alliance-data-systems/open-bread-pay-platform/)
 
-Official Bread Financial mobile SDK for iOS published as breadfinancial-brand-partners-ios on the bppub GitHub organization. Provides batch prescreen, unified prequalification, placement rendering, application callbacks, and customer status events for native iOS apps.
+#### Governance rules (3)
 
-- **Human URL:** [https://github.com/bppub/breadfinancial-brand-partners-ios](https://github.com/bppub/breadfinancial-brand-partners-ios)
-- **Base URL:** `https://github.com/bppub`
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Alliance Data Systems (Bread Financial Holdings) — jsonschema rules](https://apis.io/rules/alliance-data-systems/alliance-data-systems-jsonschema-spectral-rules/)
+- [Alliance Data Systems (Bread Financial Holdings) — bread classic merchant rules](https://apis.io/rules/alliance-data-systems/bread-classic-merchant-rules/)
+- [Alliance Data Systems (Bread Financial Holdings) — bread pay platform rules](https://apis.io/rules/alliance-data-systems/bread-pay-platform-rules/)
 
-- SDK
-- Mobile
-- iOS
-- Swift
-- Prequalification
-- Placements
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Repository](https://github.com/bppub/breadfinancial-brand-partners-ios)
-- [Alternate Swift Repo](https://github.com/bppub/breadfinancial-brand-partners-ios-swift)
-- [Documentation](https://platform-docs.breadpayments.com/bread-onboarding)
-- [Postman Collection](collections/bread-classic-merchant.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-classic-merchant.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/bread-pay-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-pay-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Alliance Data Systems Authentication](https://apis.io/security/alliance-data-systems/alliance-data-systems-authentication/)
+- [Alliance Data Systems Domain Security](https://apis.io/security/alliance-data-systems/alliance-data-systems-domain-security/)
 
-### Bread Financial Brand Partners Android SDK
+#### OAuth scopes (1)
 
-Official Bread Financial mobile SDK for Android (Kotlin) published as breadfinancial-brand-partners-android on the bppub GitHub organization. Provides batch prescreen, unified prequalification, placement rendering, application callbacks, and customer status events for native Android apps.
+The permissions the API asks for.
 
-- **Human URL:** [https://github.com/bppub/breadfinancial-brand-partners-android](https://github.com/bppub/breadfinancial-brand-partners-android)
-- **Base URL:** `https://github.com/bppub`
+- [Alliance Data Systems Scopes](https://apis.io/scopes/alliance-data-systems/alliance-data-systems-scopes/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- SDK
-- Mobile
-- Android
-- Kotlin
-- Prequalification
-- Placements
+Published plans, tiers and prices.
 
-#### Properties
+- [Alliance Data Systems Plans Pricing](https://apis.io/plans/alliance-data-systems/alliance-data-systems-plans-pricing/)
 
-- [Repository](https://github.com/bppub/breadfinancial-brand-partners-android)
-- [Documentation](https://platform-docs.breadpayments.com/bread-onboarding)
-- [Postman Collection](collections/bread-classic-merchant.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-classic-merchant.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/bread-pay-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-pay-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Bread Webhooks
+Published request limits.
 
-Outbound webhook system for the BreadPay Platform that notifies merchant systems of transaction lifecycle events. Documented under the BreadPay developer site with setup, concepts, validation, and client implementation guides.
+- [Alliance Data Systems Rate Limits](https://apis.io/rate-limits/alliance-data-systems/alliance-data-systems-rate-limits/)
 
-- **Human URL:** [https://platform-docs.breadpayments.com/bread-developers/docs](https://platform-docs.breadpayments.com/bread-developers/docs)
-- **Base URL:** `https://platform-docs.breadpayments.com/bread-developers/docs`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Webhooks
-- Events
-- Transactions
-- Eventing
+- [Alliance Data Systems Finops](https://apis.io/finops/alliance-data-systems/alliance-data-systems-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://platform-docs.breadpayments.com/bread-developers/docs)
-- [Postman Collection](collections/bread-classic-merchant.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-classic-merchant.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/bread-pay-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bread-pay-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.breadfinancial.com)
-- [Former Website](https://www.alliancedata.com)
-- [B N P L Website](https://www.breadpayments.com)
-- [Business Solutions](https://www.breadfinancial.com/en/business-solutions.html)
-- [Buy Now Pay Later](https://www.breadfinancial.com/en/business-solutions/buy-now-pay-later.html)
-- [Newsroom](https://newsroom.breadfinancial.com)
-- [Investor Relations](https://investor.breadfinancial.com)
-- [S E C Rebrand Filing](https://www.sec.gov/Archives/edgar/data/0001101215/000110121522000058/form_8-k.htm)
-- [Wikipedia Page](https://en.wikipedia.org/wiki/Bread_Financial)
-- [Developer Portal](https://platform-docs.breadpayments.com/bread-developers)
-- [Classic Developer Portal](https://docs.breadpayments.com/bread-classic/reference)
-- [Onboarding Docs](https://platform-docs.breadpayments.com/bread-onboarding)
-- [GitHub Organization](https://github.com/bppub)
-- [Integrations Git Hub Organization](https://github.com/breadfinance)
-- [Legacy Git Hub Organization](https://github.com/getbread)
-- [A P I Tracker](https://apitracker.io/a/breadpayments)
-- [LinkedIn](https://www.linkedin.com/company/bread-financial)
-- [Plans](plans/alliance-data-systems-plans-pricing.yml)
-- [Rate Limits](rate-limits/alliance-data-systems-rate-limits.yml)
-- [Fin Ops](finops/alliance-data-systems-finops.yml)
-- [Vocabulary](vocabulary/alliance-data-systems-vocabulary.yml)
-- [J S O N L D Context](json-ld/alliance-data-systems-context.jsonld)
+- [Blog](https://newsroom.breadfinancial.com/rss.xml)
+- [GitHub](https://github.com/bppub)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 36.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.0 |
+| Contract quality | 56.6 |
+| Contract governance | 27.3 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 38.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 22.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.8** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/alliance-data-systems/](https://apis.io/providers/alliance-data-systems/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Alliance Data Systems (Bread Financial Holdings): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/alliance-data-systems/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
